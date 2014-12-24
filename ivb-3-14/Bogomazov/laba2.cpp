@@ -2,7 +2,7 @@
 //  main.cpp
 //  2 laba
 //
-//  Created by Степан Богомазов on 24.12.14.
+//  Created by Степан Богомазов on 2.12.14.
 //  Copyright (c) 2014 Степан Богомазов. All rights reserved.
 //
 
