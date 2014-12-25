@@ -4,90 +4,19 @@
 #include <cctype>
 #include <clocale>
 #include <cstring>
+#include <sstream>
+#include <iostream>
 
-static const char * const g_lpstrFileName = "INPUT.TXT";
+static const char * const InputFileName = "input_4.txt";
 
-#define BUFFER_CHUNK 20
-struct __String
-{
-	char  *data;
-	int    len;
-	int    allocated;
-};
-typedef struct __String String;
-
-static void
-__AppendString(String *str, int ch)
-{
-	if (str == NULL)
-		return;
-	if (str->data == NULL) {
-		str->data = (char *)calloc(1, BUFFER_CHUNK);
-		str->len = 0;
-		str->allocated = BUFFER_CHUNK;
-	} else {
-		if (str->allocated < (str->len + 1)) {
-			str->allocated += BUFFER_CHUNK;
-			str->data = (char *)realloc(str->data, str->allocated);
-		}
-	}
-	str->data[str->len++] = (char)ch;
-}
-
-static void
-__FreeString(String *str)
-{
-	if (str) {
-		free(str->data);
-		str->data = NULL;
-		str->len = 0;
-		str->allocated = 0;
-	}
-}
-
-static void
-__ClearString(String *str)
-{
-	memset(str->data, 0, str->allocated);
-	str->len = 0;
-}
-
-static int
-__CheckString(String *str)
-{
-	int  i;
-	char last;
-
-	last = 0x00;
-	for (i = 0; i < str->len; ++i) {
-		char ch = str->data[i];
-		if (isupper((int)ch) && last == ch)
-			return 0;
-		last = ch;
-	}
-	return 1;
-}
-
-static int
-__IsNullString(String *str)
-{
-	return str->len == 0;
-}
-
-static void
-__DoResult(String *str)
-{
-	int ret = __CheckString(str);
-	fprintf(stdout, "Строка \"%s\": %s\n", str->data, (ret ? "Соответствует" : "Не соответствует"));
-	__ClearString(str);
-}
-
-#define CLEARWS() \
+#define SKIPWHS() \
 		while (!feof(fd)) { \
             ch = fgetc(fd); \
-            if (!iswspace(ch)) \
+            if (!isspace(ch)) \
                break; \
 		}
+
+int convert(std::stringstream a, int pos) {}
 
 int
 main(int argc, char **)
@@ -95,62 +24,51 @@ main(int argc, char **)
 	FILE *fd;
 	setlocale(LC_ALL, "Russian");
 
+	long FileSize;
+	char *buffer;
 
-	fd = fopen(g_lpstrFileName, "r");
-	if (fd != NULL) {
-#if 0
-		String str;
-		int ch;
+	 fd = fopen ( InputFileName , "r" );
+	 if( fd != NULL) {
+	
+		 fseek( fd , 0L , SEEK_END);
+		 FileSize = ftell( fd );
+		 rewind( fd );
 
-		memset(&str, 0, sizeof(String));
-		/** FIXME: CLEARWS(); */
-		while (!feof(fd)) {
-			ch = fgetc(fd);
-			if (iswspace(ch) || ch == EOF) {
-				__DoResult(&str);
-				CLEARWS();
-				if (feof(fd))
-					break;
-			}
-			__AppendString(&str, ch);
-		}
-		if (!__IsNullString(&str)) {
-			__DoResult(&str);
-		}
-		__FreeString(&str);
-#else
-		int   last = 0x00;
-		int   ch;
-		char  buffer[1000];
-		int   next = 0;
-		int   result = 1;
+	    /* allocate memory for entire content */
+		 buffer = (char*) calloc( 1, FileSize+1 );
+		 if( !buffer ) { //an error while allocating memory
+			 fclose(fd);
+			 fprintf(stderr, "memory allocation fails");
+			 return EXIT_FAILURE;
+		 };
 
-		memset(buffer, 0, sizeof(buffer));
-		while (!feof(fd)) {
-			ch = fgetc(fd);
-			if (iswspace(ch) || ch == EOF) {
-				fprintf(stdout, "Строка \"%s\": %s\n", buffer, (result ? "Соответствует" : "Не соответствует"));
-				last = 0x00;
-				next = 0;
-				result = 1;
-				memset(buffer, 0, sizeof(buffer));
-				CLEARWS();
-				if (feof(fd))
-					break;
-			} else {
-				if (isupper(ch) && ch == last) {
-					result = 0;
-				}
-			}
-			buffer[next++] = (char)ch;
-			last = ch;
+	    /* copy the file into the buffer */
+		 if( 1!=fread( buffer , FileSize, 1 , fd) ){ //an error while allocating memory
+			 fclose(fd);
+			 fprintf(stderr, "error while reading");
+			 return EXIT_FAILURE;
+		 };
+
+		 fclose(fd);
+		 //now the file is in buffer variable
+		 int curpos = 0;
+		 int prevpos=0;
+		 int sal[2];
+		 for (i = 0; i <=2; ++i) {
+			while (!isspace && curpos <= FileSize) {};
+			char *salary = calloc (1, curpos-prevpos)
+			
+			atoi()				
 		}
-#endif
-		fclose(fd);
+		 
+		 
+		 
+		 
+		 
 	} else {
-		fprintf(stderr, "Входной файл %s не найден.\n", g_lpstrFileName);
+		fprintf(stderr, "Входной файл \"%s\" не найден.\n", InputFileName);
 	}
-	fprintf(stdout, "Нажмите любую клавишу для продолжения...\n");
+	fprintf(stdout, "Нажмите любую клавишу для продолжения...");
 	fgetc(stdin);
 	return EXIT_SUCCESS;
 }
