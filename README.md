@@ -9,14 +9,13 @@ https://helloacm.com/understanding-tail-recursion-visual-studio-c-assembly-view/
 Темы курсовых
 
 1.  Игры пошаговые (морской бой, шашки, виселица, пятнашки, text adventure, ...) - исполняет И.А.
-2.  Игры real-time:
-      скроллеры
-      платформеры
-      тетрис
-      арканоид
-      space invaders
-      pong
-      pac-man - исполняет М.К.
+3.  Игры real-time: скроллеры
+4.  Игры real-time: платформеры
+5.  Игры real-time: тетрис
+6.  Игры real-time: арканоид
+7.  Игры real-time: space invaders
+8.  Игры real-time: pong
+9.  Игры real-time: pac-man - исполняет М.К.
 3.  Калькулятор - Исполняет А.П.
 4.  Форматирование текста с переносами
 5.  Программа для обмена текстовыми сообщениями
