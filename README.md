@@ -11,7 +11,7 @@ https://helloacm.com/understanding-tail-recursion-visual-studio-c-assembly-view/
 1.  Игры пошаговые (морской бой, шашки, виселица, пятнашки, text adventure, ...) - исполняет И.А.
 3.  Игры real-time: скроллеры
 4.  Игры real-time: платформеры
-5.  Игры real-time: тетрис
+5.  Игры real-time: тетрис - Исполняет К.Д.
 6.  Игры real-time: арканоид
 7.  Игры real-time: space invaders
 8.  Игры real-time: pong
