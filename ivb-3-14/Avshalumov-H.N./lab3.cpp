@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 	for (int i = 0; i < phrase_count; i++)
 		delete [] phrases[i];
 	delete [] phrases;
-	delete input;
+	free(input);
 
 	system("pause");
 	return 0;
