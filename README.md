@@ -25,4 +25,4 @@ https://helloacm.com/understanding-tail-recursion-visual-studio-c-assembly-view/
 15. Симулятор дорожного движения
 16. Генератор случайных текстов
 17. Генератор текста заданного шаблонами(правилами) - исполняет В.И.
-![ScreenShot](http://cs619821.vk.me/v619821485/9edc/ErG5sNDMYWU.jpg)
+![ScreenShot](https://pp.vk.me/c621417/v621417231/c48e/9MJY8JTsnMc.jpg)
