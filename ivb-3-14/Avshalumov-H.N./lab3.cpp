@@ -10,16 +10,14 @@ void Split(char * input, char ** &output);
 void Print(char ** buffer, int length);
 char * GetPhrase(char * input, int offest, int length);
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     setlocale(0, "Russian");
     char * input = _strdup("rftyu tfghj ftgyhuioo u jkn ii 5asd asd");
     
     int i = 0;
     int phrase_count = 1;
     char c;
-    do
-    {
+    do {
         c = input[i++];
         if(c==' ')
         phrase_count++;
@@ -31,8 +29,8 @@ int main(int argc, char **argv)
     printf_s("Оригинал:n");
     Print(phrases, phrase_count);
     
-    for (int j=1;j<=phrase_count-1;j++){
-        for (int i=0; i<phrase_count-j; i++){
+    for (int j=1;j<=phrase_count-1;j++) {
+        for (int i=0; i<phrase_count-j; i++) {
             if(strlen(phrases[i])<strlen(phrases[i+1]))
             {
                 char * s = phrases[i+1];
@@ -56,8 +54,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-char * GetPhrase(char * input, int offest, int length)
-{
+char * GetPhrase(char * input, int offest, int length) {
     char * phrase = new char[length+1];
     
     int _offest = offest-length-1;
@@ -68,29 +65,24 @@ char * GetPhrase(char * input, int offest, int length)
     return phrase;
 }
 
-void Print(char ** buffer, int length)
-{
-    for (int o = 0; o < length; o++)
-    {
+void Print(char ** buffer, int length) {
+    for (int o = 0; o < length; o++) {
         printf_s(buffer[o]);
         printf_s(" ");
     }
     printf_s("n");
 }
 
-void Split(char * input, char ** &output)
-{
+void Split(char * input, char ** &output) {
     char c;
     int i = 0;
     int n = 0;
     int h = 0;
     
-    do
-    {
+    do {
         c = input[i++];
-        if(c==' ')
-        {
-            if(h!=0){
+        if(c==' ') {
+            if(h!=0) {
                 output[n] = GetPhrase(input, i, h);
                 n++;
                 h = 0;
