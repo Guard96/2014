@@ -10,7 +10,7 @@ void Split(char * input, char ** &output);
 void Print(char ** buffer, int length);
 char * GetPhrase(char * input, int offest, int length);
 
-int main(int argc, char **argv) {
+    int main(int argc, char **argv) {
     setlocale(0, "Russian");
     char * input = _strdup("rftyu tfghj ftgyhuioo u jkn ii 5asd asd");
     
@@ -31,8 +31,7 @@ int main(int argc, char **argv) {
     
     for (int j=1;j<=phrase_count-1;j++) {
         for (int i=0; i<phrase_count-j; i++) {
-            if(strlen(phrases[i])<strlen(phrases[i+1]))
-            {
+            if(strlen(phrases[i])<strlen(phrases[i+1])) {
                 char * s = phrases[i+1];
                 phrases[i+1]=phrases[i];
                 phrases[i]=s;
