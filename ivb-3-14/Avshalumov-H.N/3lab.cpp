@@ -10,7 +10,8 @@ void Split(char * input, char ** &output);
 void Print(char ** buffer, int length);
 char * GetPhrase(char * input, int offest, int length);
 
-    int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
     setlocale(0, "Russian");
     char * input = _strdup("rftyu tfghj ftgyhuioo u jkn ii 5asd asd");
     
@@ -29,11 +30,11 @@ char * GetPhrase(char * input, int offest, int length);
     printf_s("Оригинал:n");
     Print(phrases, phrase_count);
     
-    for (int j = 1; j <= phrase_count-1; j++) {
-        for (int i = 0; i < phrase_count-j; i++) {
-            if(strlen(phrases[i]) < strlen(phrases[i+1])) {
-                char * s = phrases[i+1];
-                phrases[i+1] = phrases[i];
+    for (int j = 1; j <= phrase_count - 1; j++) {
+        for (int i = 0; i < phrase_count - j; i++) {
+            if(strlen(phrases[i]) < strlen(phrases[i + 1])) {
+                char * s = phrases[i + 1];
+                phrases[i + 1] = phrases[i];
                 phrases[i] = s;
             }
         }
@@ -53,26 +54,29 @@ char * GetPhrase(char * input, int offest, int length);
     return 0;
 }
 
-    char * GetPhrase(char * input, int offest, int length) {
-    char * phrase = new char[length+1];
+char * GetPhrase(char * input, int offest, int length) 
+{
+    char * phrase = new char[length + 1];
     
-    int _offest = offest-length-1;
+    int _offest = offest - length - 1;
     for(int m=0 ; m < length; m++)
-    phrase[m] = input[_offest+m];
+        phrase[m] = input[_offest + m];
     
     phrase[length] = '';
     return phrase;
 }
 
-    void Print(char ** buffer, int length) {
-    for (int o = 0; o < length; o++) {
-        printf_s(buffer[o]);
+void Print(char ** buffer, int length) 
+{
+    for (int i = 0; i < length; i++) {
+        printf_s(buffer[i]);
         printf_s(" ");
     }
     printf_s("n");
 }
 
-    void Split(char * input, char ** &output) {
+void Split(char * input, char ** &output) 
+{
     char c;
     int i = 0;
     int n = 0;
@@ -86,10 +90,10 @@ char * GetPhrase(char * input, int offest, int length);
                 n++;
                 h = 0;
             }
+        } else {
+            h++;
         }
-        else
-        h++;
     } while (c != '');
     
-    output[n] = GetPhrase(input, i, h-1);
+    output[n] = GetPhrase(input, i, h - 1);
 }
