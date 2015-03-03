@@ -8,10 +8,10 @@ https://helloacm.com/understanding-tail-recursion-visual-studio-c-assembly-view/
 
 Темы курсовых
 
-1.  Игры пошаговые (морской бой, шашки, виселица, пятнашки, text adventure, ...) - исполняет И.А., И.С.
+1.  Игры пошаговые (морской бой, шашки, виселица, пятнашки, text adventure, ...) - исполняет И.А., И.С., К.Д.
 3.  Игры real-time: скроллеры
 4.  Игры real-time: платформеры
-5.  Игры real-time: тетрис - Исполняет К.Д.
+5.  Игры real-time: тетрис 
 6.  Игры real-time: арканоид
 7.  Игры real-time: space invaders
 8.  Игры real-time: pong
