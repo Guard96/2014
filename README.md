@@ -26,4 +26,6 @@ https://helloacm.com/understanding-tail-recursion-visual-studio-c-assembly-view/
 16. Runtime игра: pacman - К. М.
 17. Runtime игра: арканоид - Б. В.
 18. Утилита wget - М. А.
+
+
 ![ScreenShot](https://pp.vk.me/c621417/v621417231/c48e/9MJY8JTsnMc.jpg)
