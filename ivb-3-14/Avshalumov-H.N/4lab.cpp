@@ -21,8 +21,8 @@
 #include <fstream>
 #include <string>
 
-int main(int argc, char **argv)
-{
+    int main(int argc, char **argv)
+    {
 	setlocale(0, "Russian");
 	std::ifstream In = std::ifstream("C:\\Users\\admin\\Documents\\visual studio 2012\\Projects\\lab02\\Debug\\input.txt");
 
@@ -33,8 +33,8 @@ int main(int argc, char **argv)
 	printf("Исходное число: %i\n", Number);
 
 	Result = Number / 10;
-	Result *= Result + 1;
-	Result *= 100;
+    Result * = Result + 1;
+    Result * = 100;
 	Result += 25;
 
 	std::ofstream Out = std::ofstream("C:\\Users\\admin\\Documents\\visual studio 2012\\Projects\\lab02\\Debug\\output.txt");
