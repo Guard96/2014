@@ -33,12 +33,11 @@
 	printf("Исходное число: %i\n", Number);
 
 	Result = Number / 10;
-    Result * = Result + 1;
-    Result * = 100;
+        Result * = Result + 1;
+        Result * = 100;
 	Result += 25;
 
-	std::ofstream Out = std::ofstream("C:\\Users\\admin\\Documents\\visual studio 2012\\Projects\\lab02\\Debug\\output.txt");
-	Out << Result;
+	std::ofstream Out = std::ofstream("C:\\Users\\admin\\Documents\\visual studio 2012\\Projects\\lab02\\Debug\\output.txt");	Out << Result;
 	Out.close();
 
 	printf("%i^2 = %i\n", Number, Result);
