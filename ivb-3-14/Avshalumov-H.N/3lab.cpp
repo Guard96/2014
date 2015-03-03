@@ -53,7 +53,7 @@ char * GetPhrase(char * input, int offest, int length);
     return 0;
 }
 
-char * GetPhrase(char * input, int offest, int length) {
+    char * GetPhrase(char * input, int offest, int length) {
     char * phrase = new char[length+1];
     
     int _offest = offest-length-1;
@@ -64,7 +64,7 @@ char * GetPhrase(char * input, int offest, int length) {
     return phrase;
 }
 
-void Print(char ** buffer, int length) {
+    void Print(char ** buffer, int length) {
     for (int o = 0; o < length; o++) {
         printf_s(buffer[o]);
         printf_s(" ");
@@ -72,7 +72,7 @@ void Print(char ** buffer, int length) {
     printf_s("n");
 }
 
-void Split(char * input, char ** &output) {
+    void Split(char * input, char ** &output) {
     char c;
     int i = 0;
     int n = 0;
