@@ -25,44 +25,54 @@ class NumberFromFileParser
 
 
 public:
-	NumberFromFileParser() : _ch(0), _fd(nullptr){}
+	NumberFromFileParser() : 
+		_ch(0), 
+		_fd(nullptr) {}
 
 	bool eof() const
 	{
 		return feof(_fd) > 0;
 	}
-	bool next()
+
+	bool next() 
 	{
 		_ch = fgetc(_fd);
 		return _ch != EOF;
 	}
+
 	bool isWhitespace() const
 	{
 		return isspace((int)_ch) > 0;
 	}
+
 	bool isDigit() const
 	{
 		return isdigit((int)_ch) > 0;
 	}
+
 	bool isPoint() const
 	{
 		return _ch == '.' ||
 			_ch == ',';
 	}
+
 	bool isSign() const
 	{
 		return _ch == '-' ||
 			_ch == '+';
 	}
+
 	bool isEndOfLine() const
 	{
 		return _ch == '\r' ||
 			_ch == '\n';
 	}
+
 	void skipWhitespace()
 	{
 		while (!eof() && isWhitespace() && next());
 	}
+
 	void skipEndOfLine()
 	{
 		while (!eof() && isEndOfLine() && next());
@@ -70,8 +80,7 @@ public:
 	void parseNumber()
 	{
 		skipWhitespace();
-		while (!eof() && !isWhitespace() &&
-			(isSign() || isPoint() || isDigit())) {
+		while (!eof() && !isWhitespace() && (isSign() || isPoint() || isDigit())) {
 			put();
 			next();
 		}
