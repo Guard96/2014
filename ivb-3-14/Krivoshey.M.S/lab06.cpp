@@ -85,6 +85,7 @@ main()
 	SaveArray();
 
 	system("pause");
+	retutn 0;
 }
 
 
