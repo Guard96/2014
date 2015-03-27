@@ -1,47 +1,62 @@
-//В7 Быковский Артем. ИВБ-3-14
-#pragma warning(disable : 4996)
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-
-#define MATRIX1 4
-#define MATRIX2 2
-#define MATRIX3 6
-
-static double m1[] = { 1., 1., 1., 1. };
-
-static double m2[] = { 1., 1. };
-
-static double m3[] = { 4., 4., 4., 4., 4., 4. };
-
-static double
-calculate(double matrix[], int elements, const double part)
+//Вариант 7  
+#include "stdafx.h"
+#include <conio.h>
+#include <stdio.h>
+#include <iostream>
+#include <clocale>
+using namespace std;
+int main()
 {
-    double result = 0;
- 	int i;
- 	for (i = 0; i < elements; i++) {
-        if (matrix[i] > part) {
- 			result += matrix[i];
- 		}
- 	}
- 	return result;
+setlocale(LC_ALL, "Russian"); //для русского языка
+//зададим диапазон значений [-30; 15]
+const int min = -30; const int max = 15;
+cout « "Диапазон: " « '(' « min « ';' « max « ")\n\n";
+//создадим 3 массива размерностью 100 и рандомными числами (-50;50)
+const int SIZE = 100;
+int a1[SIZE], a2[SIZE], a3[SIZE];
+int i = 0; //для циклов
+int s[3] = {0, 0, 0}; //суммы элементов 3-х массивов
+int min_s;
+for(int i = 0; i < SIZE; i++)
+{
+//randomize();
+a1[i] = rand()%100 - 50;
+a2[i] = rand()%100 - 50;
+a3[i] = rand()%100 - 50;
 }
-void min_mr(double mr1, double mr2, double mr3)
+cout « "Массив 1: ";
+for(i = 0; i < SIZE; i++)
+cout « a1[i] « ' ';
+cout « endl « "Массив 2: ";
+for(i = 0; i < SIZE; i++)
+cout « a2[i] « ' ';
+cout « endl « "Массив 3: ";
+for(i = 0; i < SIZE; i++)
+cout « a3[i] « ' ';
+cout « endl;
+
+for(i = 0; i < SIZE; i++)
 {
-    if (mr1 == mr2)
-        fprintf(stdout, "MATRIX1 == MATRIX2\n");
-    if (mr2 == mr3)
-        fprintf(stdout, "MATRIX2 == MATRIX3\n");
-    if (mr1 == mr3)
-        fprintf(stdout, "MATRIX1 == MATRIX3\n");
+if(a1[i] < min || a1[i] > max)
+s[0] += a1[i];
+if(a2[i] < min || a2[i] > max)
+s[1] += a2[i];
+if(a3[i] < min || a3[i] > max)
+s[2] += a3[i];
 }
-int main(int argc, char **argv)
-{
- 	const double part = 4.;
- 	double mr1 = calculate(m1, MATRIX1, part);
- 	double mr2 = calculate(m2, MATRIX2, part);
- 	double mr3 = calculate(m3, MATRIX3, part);
- 	min_mr(mr1, mr2, mr3);
- 	system("pause");
- 	return EXIT_SUCCESS;
+cout « endl;
+for(i = 0; i < 3; i++)
+cout « "Значение суммы " « i+1 « ": "« s[i] « endl;
+cout « endl;
+min_s = s[0];
+for( i = 1; i < 3; i++)
+if(s[i] < min_s)
+min_s = s[i];
+cout « "Минимальная сумма элементов заданного диапазона: " « min_s « endl;
+cout « "Минимальная сумма в массиве: ";
+for(i = 0; i < 3; i++)
+if(min_s == s[i])
+cout « i + 1 « ' ';
+cout « endl;
+_getch();
 }
