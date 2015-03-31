@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -25,8 +25,8 @@ class NumberFromFileParser
 
 
 public:
-	NumberFromFileParser() : 
-		_ch(0), 
+	NumberFromFileParser() :
+		_ch(0),
 		_fd(nullptr) {}
 
 	bool eof() const
@@ -34,7 +34,7 @@ public:
 		return feof(_fd) > 0;
 	}
 
-	bool next() 
+	bool next()
 	{
 		_ch = fgetc(_fd);
 		return _ch != EOF;
@@ -90,13 +90,13 @@ public:
 		_buffer.push_back(_ch);
 	}
 
-	std::vector<std::vector<Type>> parse(const char * const  name)
+	std::vector<std::vector<Type>> parse(std::string  name)
 	{
 		std::vector<std::vector<Type>> MATRIX;
 		MATRIX.clear();
 		std::vector<Type> row;
 		if (_fd == nullptr)
-			_fd = fopen(name, "r");
+			_fd = fopen(name.c_str(), "r");
 		if (_fd == nullptr)
 			return MATRIX;
 		next();
@@ -125,15 +125,12 @@ static int CountPositiveElement(MATRIX m);
 static int CountNegativeElement(MATRIX m);
 static int __exception(const char * const szMessage);
 
-int main(int argc, char **argv)
+int main()
 {
 	setlocale(0, "Russian");
-	if (argc < 3)
-		return __exception("Íåò âõîäíûõ ôàéëîâ");
-
 	NumberFromFileParser<double> parser;
-	MATRIX m1 = parser.parse(argv[1]);
-	MATRIX m2 = parser.parse(argv[2]);
+	MATRIX m1 = parser.parse(std::string("matrix1.dat"));
+	MATRIX m2 = parser.parse(std::string("matrix2.dat"));
 
 	PrintMatrix(m1);
 	PrintMatrix(m2);
@@ -180,7 +177,7 @@ int CountPositiveElement(MATRIX m)
 		sum += *j;
 		n++;
 	}
-	double result = sum / n;
+	double result = (double) sum / (double) n;
 	return result;
 }
 

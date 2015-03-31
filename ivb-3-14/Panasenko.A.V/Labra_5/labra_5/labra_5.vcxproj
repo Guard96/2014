@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0ECE2F0A-C9AF-4CB8-8780-C86B6ED99BB3}</ProjectGuid>
+    <ProjectGuid>{5DAEA153-EE90-4713-AE8B-69A89AC2ABD5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <RootNamespace>labra_5</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,11 +78,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\matrix1.dat" />
-    <None Include="..\matrix2.dat" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <None Include="..\matrix1.dat" />
+    <None Include="..\matrix2.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
