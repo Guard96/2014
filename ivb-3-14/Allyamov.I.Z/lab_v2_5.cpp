@@ -112,11 +112,6 @@ void __outputCount(matrix m){
 	}
 }
 
-int __exception(const char * const szMessage){
-	fprintf(stderr, "%s\n", szMessage);
-	return EXIT_FAILURE;
-}
-
 void PrintMatrix(matrix m){
 	for (auto i = m.begin(); i != m.end(); i++)
 	{
@@ -131,7 +126,7 @@ int main(int argc, char **argv)
 {
 	setlocale(0, "Russian");
 	if (argc < 3)
-		return __exception("Нет входных файлов");
+		return 0;
 
 	NumberFromFileParser<double> parser;
 	matrix m1 = parser.parse(argv[1]);
