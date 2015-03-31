@@ -56,12 +56,6 @@ class NumberFromFileParser
 {
 	typedef std::vector<double>         __MatrixLine;
 	typedef std::vector< __MatrixLine > __Matrix;
-
-	friend double **
-	__loadMatrix(
-	    const char * const szFileName, 
-	    int * piRows, 
-	    int * piCols);
 public:
 	NumberFromFileParser()
 		: _ch(0), _fd(0)
@@ -125,12 +119,12 @@ public:
 		_buffer.push_back(_ch);
 	}
 
-	bool parse(const char * const  name, __Matrix &matrix)
+	bool parse(std::string name, __Matrix &matrix)
 	{
 		std::vector<double> row;
 		matrix.clear();
 		if (_fd == 0)
-			_fd = fopen(name, "r");
+			_fd = fopen(name.c_str(), "r");
 		if (_fd == 0)
 			return false;
 		next();
@@ -159,18 +153,14 @@ private:
 };
 
 int
-main(int argc, char **argv)
+main()
 {
 	setlocale (0, "Russian");
-	if (argc < 3) {
-		printf("Not found input file\n");
-		return EXIT_FAILURE;
-	}
-
+	
 	matrix matrix1, matrix2;
 	NumberFromFileParser parser;
-	parser.parse(argv[1], matrix1);
-	parser.parse(argv[2], matrix2);
+	parser.parse(std::string("matrix1.txt"), matrix1);
+	parser.parse(std::string("matrix2.txt"), matrix2);
 	
 	print(matrix1);
 	print(matrix2);
