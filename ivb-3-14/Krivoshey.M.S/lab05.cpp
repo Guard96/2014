@@ -80,13 +80,13 @@ public:
 		_buffer.push_back(_ch);
 	}
 
-	std::vector<std::vector<Type>> parse(const char * const  name)
+	std::vector<std::vector<Type>> parse(std::string  name)
 	{
 		std::vector<std::vector<Type>> matrix;
 		matrix.clear();
 		std::vector<Type> row;
 		if (_fd == nullptr)
-			_fd = fopen(name, "r");
+			_fd = fopen(name.c_str(), "r");
 		if (_fd == nullptr)
 			return matrix;
 		next();
@@ -114,17 +114,13 @@ static void PrintMatrix(matrix m);
 static int GetCountZeroElement(matrix m);
 static int GetCountNegativeElement(matrix m);
 
-int main(int argc, char **argv)
+int main()
 {
 	setlocale(0, "Russian");
-	if (argc < 3) {
-		printf("Нет входных файлов");
-		return EXIT_FAILURE;
-	}
 
 	NumberFromFileParser<double> parser;
-	matrix m1 = parser.parse(argv[1]);
-	matrix m2 = parser.parse(argv[2]);
+	matrix m1 = parser.parse(std::string("mat1.txt"));
+	matrix m2 = parser.parse(std::string("mat2.txt"));
 
 	PrintMatrix(m1);
 	PrintMatrix(m2);
