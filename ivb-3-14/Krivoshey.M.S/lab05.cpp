@@ -113,13 +113,14 @@ public:
 static void PrintMatrix(matrix m);
 static int GetCountZeroElement(matrix m);
 static int GetCountNegativeElement(matrix m);
-static int __exception(const char * const szMessage);
 
 int main(int argc, char **argv)
 {
 	setlocale(0, "Russian");
-	if (argc < 3)
-		return __exception("Нет входных файлов");
+	if (argc < 3) {
+		printf("Нет входных файлов");
+		return EXIT_FAILURE;
+	}
 
 	NumberFromFileParser<double> parser;
 	matrix m1 = parser.parse(argv[1]);
@@ -138,12 +139,6 @@ int main(int argc, char **argv)
 
 	system("pause");
 	return EXIT_SUCCESS;
-}
-
-int __exception(const char * const szMessage)
-{
-	fprintf(stderr, "%s\n", szMessage);
-	return EXIT_FAILURE;
 }
 
 void PrintMatrix(matrix m)
