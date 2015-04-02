@@ -5,61 +5,58 @@
 
 using std::string;
 
-class item
+class Item
 {
 public:
 	virtual void print(){}
 };
 
-class number : public item
+class Number : public Item
 {
-public:
 	double value;
-
-	number(double v)
-	{
-		value = v;
-	}
-
+	
 	void print()
 	{
 		printf("Число %.1f\n", value);
 	}
-};
-
-class litera : public item
-{
 public:
-	char * value;
-
-	litera(char * v)
+	Number(double v)
 	{
 		value = v;
 	}
-	~litera()
-	{
-		free(value);
-	}
+};
 
+class Litera : public Item
+{
+	char * value;
+	
 	void print()
 	{
 		printf("Литера \"%s\"\n", value);
 	}
-};
-
-class symbol : public item
-{
 public:
-	char value;
-
-	symbol(char v)
+	Litera(char * v)
 	{
 		value = v;
 	}
+	~Litera()
+	{
+		free(value);
+	}
+};
+
+class Symbol : public Item
+{
+	char value;
 
 	void print()
 	{
 		printf("Символ '%c'\n", value);
+	}
+public:
+	Symbol(char v)
+	{
+		value = v;
 	}
 };
 
@@ -83,7 +80,7 @@ int main()
 {
 	setlocale(0, "Russian");
 
-	std::vector<item *> items;
+	std::vector<Item *> items;
 
 	char * input = _strdup("testing+322 l / 2,2 wat = 75,3,14");
 	int len = strlen(input);
@@ -113,18 +110,18 @@ int main()
 					temp[_y] = 0;
 
 					if (flag_number) {
-						items.push_back(new number(atof(temp)));
+						items.push_back(new Number(atof(temp)));
 						flag_number = false;
 						use_tochka = false;
 						delete temp;
 					}
 					else
-						items.push_back(new litera(temp));
+						items.push_back(new Litera(temp));
 
 					buff.clear();
 				}
 				if (c != 0)
-					items.push_back(new symbol(c));
+					items.push_back(new Symbol(c));
 			}
 			else
 			{
