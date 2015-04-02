@@ -15,29 +15,48 @@ using std::string;
 
 struct MyStruct
 {
+	static int memory_count;
 	int d,f,g;
+
+	void* operator new(size_t size)
+	{
+		memory_count += size;
+		return malloc(size);
+	}
 };
 
-std::vector<MyStruct> base;
+int MyStruct::memory_count = 0;
+std::vector<MyStruct*> base;
+
+void
+clear()
+{
+	for (auto x = base.begin(); x < base.end(); x++)
+		delete *x;
+	base.clear();
+	MyStruct::memory_count = 0;
+}
 
 void
 load(string patch)
 {
+	clear();
+
 	ifstream fs = ifstream(patch.c_str());
 
 	int h=0;
 	fs >> h;
 	for (int i =0; i<h; i++)
 	{
-		MyStruct dfg;
-		fs>>dfg.d;
-		fs>>dfg.f;
-		fs>>dfg.g;
+		MyStruct* dfg = new MyStruct();
+		fs>>dfg->d;
+		fs>>dfg->f;
+		fs>>dfg->g;
 		base.push_back(dfg);
 	}
 	fs.close();
 
-	printf("Файл '%s' загружен, выделено %i байт\n", patch.c_str(), base.size() * sizeof(MyStruct));
+	printf("Файл '%s' загружен, выделено %i байт\n", patch.c_str(), MyStruct::memory_count);
 }
 
 void
@@ -48,8 +67,9 @@ save(string patch)
 	fs<<base.size();
 	fs << '\n';
 
-	for(auto x = base.begin(); x < base.end(); x++)
-		fs << x->d << ' ' << x->f << ' ' << x->g << '\n';
+	for(auto x = base.begin(); x < base.end(); x++) {
+		fs << (*x)->d << ' ' << (*x)->f << ' ' << (*x)->g << '\n';
+	}
 
 	fs.close();
 }
@@ -57,8 +77,9 @@ save(string patch)
 void
 print()
 {
-	for (auto x = base.begin(); x < base.end(); x++)
-		cout << x->d << ' ' << x->f << ' ' << x->g << '\n';
+	for (auto x = base.begin(); x < base.end(); x++) {
+		cout << (*x)->d << ' ' << (*x)->f << ' ' << (*x)->g << '\n';
+	}
 	cout<<'\n';
 }
 
@@ -74,18 +95,23 @@ swap(MyStruct * s, MyStruct * a)
 void
 sort()
 {
-	for (int i = 0; i < base.size()-1; i++)
-		for (int j = 0; j < base.size()-1-i; j++)
-			if(base[j].d>base[j+1].d)
-				swap(&base[j], &base[j+1]);
+	for (int i = 0; i < base.size()-1; i++) {
+		for (int j = 0; j < base.size()-1-i; j++) {
+			if(base[j]->d > base[j+1]->d) {
+				swap(base[j], base[j+1]);
+			}
+		}
+	}
 }
 
 void
 find(int d)
 {
-	for (auto x = base.begin(); x < base.end(); x++)
-		if(x->d==d)
-			cout << x->d << ' ' << x->f << ' ' << x->g << '\n';
+	for (auto x = base.begin(); x < base.end(); x++) {
+		if((*x)->d==d) {
+			cout << (*x)->d << ' ' << (*x)->f << ' ' << (*x)->g << '\n';
+		}
+	}
 }
 
 int
@@ -99,6 +125,7 @@ main()
 	print();
 	save("base2.txt");
 
+	clear();
 	system("pause");
 	return EXIT_SUCCESS;
 }
