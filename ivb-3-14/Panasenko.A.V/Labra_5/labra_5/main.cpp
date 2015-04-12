@@ -167,7 +167,7 @@ void PrintMatrix(MATRIX m)
 	printf("\n");
 }
 
-int CountPositiveElement(MATRIX m)
+double CountPositiveElement(MATRIX m)
 {
 	int n = 0;
 	double sum = 0;
@@ -177,7 +177,7 @@ int CountPositiveElement(MATRIX m)
 		sum += *j;
 		n++;
 	}
-	double result = (double) sum / (double) n;
+	double result = sum / n;
 	return result;
 }
 
