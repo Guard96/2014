@@ -28,10 +28,10 @@ public:
 Item * Base = nullptr;
 int len = 0;
 
-void LoadArray();
-void SaveArray();
-void ShortArray();
-void PrintArray();
+void Load_Array();
+void Save_Array();
+void Sort_Array();
+void Print_Array();
 
 Item* find(int index);
 
