@@ -1,3 +1,4 @@
+//вариант 7
 #include "stdafx.h"
 #include <conio.h>
 #include <stdio.h>
