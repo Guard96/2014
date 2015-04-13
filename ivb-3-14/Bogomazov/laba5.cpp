@@ -1,3 +1,5 @@
+Не доделал
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdlib.h>
@@ -131,37 +133,4 @@ int main()
 
 	system("pause");
 	return EXIT_SUCCESS;
-}
 
-void PrintMatrix(matrix m)
-{
-	for (auto i = m.begin(); i != m.end(); i++)
-	{
-		for (auto j = i->begin(); j != i->end(); j++)
-			printf("%3.1f\t", *j);
-		printf("\n");
-	}
-	printf("\n");
-}
-
-int GetCountZeroElement(matrix m)
-{
-	int count = 0;
-	for (auto i = m.begin(); i != m.end(); i++)
-	for (auto j = i->begin(); j != i->end(); j++)
-	if (*j == 0)
-		count++;
-
-	return count;
-}
-
-int GetCountNegativeElement(matrix m)
-{
-	int count = 0;
-	for (auto i = m.begin(); i != m.end(); i++)
-	for (auto j = i->begin(); j != i->end(); j++)
-	if (*j = 0)
-		count++;
-
-	return count;
-}
