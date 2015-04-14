@@ -127,51 +127,50 @@ public:
         }
         void parseNumber()
         {
-        skipWhitespace();
-               while (!eof() && !isWhitespace() &&
+            skipWhitespace();
+            while (!eof() && !isWhitespace() &&
                (isSign() || isDot() || isDigit())) {
-            put();
-            next(); 
+                put();
+                next(); 
             } 
         }
         void put()
         {
-        _buffer.push_back(_ch); 
+            _buffer.push_back(_ch); 
         }
         bool parse(const char * const name, __Matrix &matrix)
         { 
-        std::vector<double> row;
-        matrix.clear();
-        if (_fd == 0)
-            _fd = fopen(name, "r");
-        if (_fd == 0)
-            return false;
-        next();
-        while (!eof()) { 
-            _buffer.clear();
-            parseNumber();
-            if (_buffer.size() > 0) { 
+            std::vector<double> row;
+            matrix.clear();
+            if (_fd == 0)
+                _fd = fopen(name, "r");
+            if (_fd == 0)
+                return false;
+            next();
+            while (!eof()) { 
+                _buffer.clear();
+                parseNumber();
+                if (_buffer.size() > 0) { 
                     row.push_back(atof(_buffer.c_str()));
+                }
+                if (isEndOfLine()) { 
+                    skipEndOfLine();
+                    matrix.push_back(row);
+                    row.clear();
+                } 
             }
-            if (isEndOfLine()) { 
-                skipEndOfLine();
-                matrix.push_back(row);
-                row.clear();
-            } 
-        }
-        if (row.size() > 0)
+            if (row.size() > 0)
             matrix.push_back(row);
-        fclose(_fd);
-        _fd = 0;
-        return true; 
+            fclose(_fd);
+            _fd = 0;
+            return true; 
         }
 private:
         char _ch;
         FILE *_fd;
         std::string _buffer; };
 double **
-__loadMatrix(
-             const char * const szFileName,
+__loadMatrix(const char * const szFileName,
              int * piRows,
              int * piCols)
 { 
@@ -179,14 +178,11 @@ __loadMatrix(
     NumberFromFileParser::__Matrix matrix;
     int retval = parser.parse(szFileName, matrix);
     if (retval) { 
-                (*piRows) = matrix.size();
-                double **result = new double * [matrix.size()];
-                for ( 
-                    NumberFromFileParser::__MatrixLine::size_type k = 0;
-                    k < matrix.size();
-                    k++) {
-                         NumberFromFileParser::__MatrixLine line = matrix.at(k);
-                         result[k] = new double [line.size()];
+        (*piRows) = matrix.size();
+        double **result = new double * [matrix.size()];
+        for (NumberFromFileParser::__MatrixLine::size_type k = 0; k < matrix.size(); k++) {
+            NumberFromFileParser::__MatrixLine line = matrix.at(k);
+            result[k] = new double [line.size()];
                          (*piCols) = line.size();
                          for (
                          NumberFromFileParser::__Matrix::size_type i = 0;
