@@ -25,19 +25,15 @@ bool Is3NumberOnly(char * string, int len)
 int main(int argc, char **argv)
 {
 	char * phrase = strdup("dfjwke ew we 45 wef9 48 wewe 4448 erwer666 wed22e wd5wed5wed65d6dd 5e5e5e555 5533");
-	int m=0, p=0, len = strlen(phrase);
+	int m = 0, p = 0, len = strlen(phrase);
 
 	char * NewPhr = new char[len+1];
 	char * buff = new char[len];
 
-	for (int i = 0; i <= len; i++)
-	{
-		if(phrase[i]==' '||i==len)
-		{
-			if(m!=0)
-			{
-				if(!Is3NumberOnly(buff, m))
-				{
+	for (int i = 0; i <= len; i++) {
+		if(phrase[i] == ' ' || i == len) {
+			if(m != 0) {
+				if(!Is3NumberOnly(buff, m)) {
 					for (int n = 0; n < m; n++)
 						NewPhr[p++] = phrase[i-n-1];
 
@@ -45,15 +41,11 @@ int main(int argc, char **argv)
 				}
 				m = 0;
 			}
-		}
-		else
+		} else
 			buff[m++] = phrase[i];
 	}
-
 	NewPhr[p] = 0;
-
 	printf("%s\n%s\n", phrase, NewPhr);
-
 	free(phrase);
 	free(buff);
 	free(NewPhr);
