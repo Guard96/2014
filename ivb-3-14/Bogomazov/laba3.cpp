@@ -10,7 +10,8 @@
 using namespace std;
 
 // Переставить буквы в тексте с помощью заданного ключа.
-string encrypt(string text, int key[]) {
+string encrypt(string text, int key[]) 
+{
     string new_text = "";
     for (int i = 0; i < 6; i++) {
         new_text += text[key[i] - 1];
@@ -18,7 +19,8 @@ string encrypt(string text, int key[]) {
     return new_text;
 }
 
-int main() {
+int main() 
+{
     string s;
     cin >> s;
     
