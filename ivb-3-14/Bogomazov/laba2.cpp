@@ -16,8 +16,10 @@ static void
 __destroyMatrix(double **pMatrix, int rows, int cols);
 static int
 __exception(const char * const szMessage)
-{ fprintf(stderr, "%s\n", szMessage);
-    return EXIT_FAILURE; }
+{ 
+    fprintf(stderr, "%s\n", szMessage);
+    return EXIT_FAILURE; 
+}
 static void
 __printMatrix(double **pMatrix, int rows, int cols);
 static double
@@ -26,7 +28,10 @@ static void
 __outputMinElements(double **pMatrix, int rows, int cols);
 int
 main(int argc, char **argv)
-{ if (argc < 3) { return __exception("Not found input file"); }
+{ 
+    if (argc < 3) { 
+        return __exception("Not found input file"); 
+    }
     int mRows1 = 0;
     int mCols1 = 0;
     int mRows2 = 0;
@@ -43,18 +48,22 @@ main(int argc, char **argv)
     double Max2 = __findZeroElement(matrix2, mRows2, mCols2);
     if (Max1 < Max2) {
         fprintf(stdout, "Output matrix N1:\n");
-        __outputMinElements(matrix1, mRows1, mCols1);} else {
-            fprintf(stdout, "Output matrix N2:\n");
-            __outputMinElements(matrix2, mRows2, mCols2); }
+        __outputMinElements(matrix1, mRows1, mCols1);
+    } else {
+        fprintf(stdout, "Output matrix N2:\n");
+        __outputMinElements(matrix2, mRows2, mCols2);
+    }
     __destroyMatrix(matrix1, mRows1, mCols1);
     __destroyMatrix(matrix2, mRows2, mCols2);
     system("pause");
-    return EXIT_SUCCESS; }
+    return EXIT_SUCCESS; 
+}
 /** ++++  */
 #include <string>
 #include <vector>
 class NumberFromFileParser
-{ typedef std::vector<double> __MatrixLine;
+{ 
+    typedef std::vector<double> __MatrixLine;
     typedef std::vector< __MatrixLine > __Matrix;
     friend double **
     __loadMatrix(
@@ -148,24 +157,37 @@ __destroyMatrix(double **pMatrix, int rows, int cols)
     delete[] pMatrix; } }
 void
 __printMatrix(double **pMatrix, int rows, int cols)
-{ for (int i = 0; i < rows; ++i) { for (int j = 0; j < cols; ++j) { if (j > 0)
-    fprintf(stdout, " ");
-    fprintf(stdout, "%3.5f", pMatrix[i][j]); }
-    fprintf(stdout, "\n"); }}
+{ 
+    for (int i = 0; i < rows; ++i) { 
+        for (int j = 0; j < cols; ++j) { 
+            if (j > 0)
+                fprintf(stdout, " ");
+            fprintf(stdout, "%3.5f", pMatrix[i][j]);
+        }
+        fprintf(stdout, "\n");
+    }
+}
 double
 __findZeroElement(double **pMatrix, int rows, int cols)
-{ double result = 0;
+{ 
+    double result = 0;
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            if (pMatrix[i][j]=0)
-                result += 1  ; } }
-    return result; }
+            if (pMatrix[i][j] = 0)
+                result += 1;
+        } 
+    }
+    return result;
+}
 void
 __outputMinElements(double **pMatrix, int rows, int cols)
-{ for (int i = 0; i < rows; ++i) {
-    int max = 0;
-    for (int j = 0; j < cols; ++j) {
-        if (pMatrix[i][j] < 0)
-            max += 1; }
-    fprintf(stdout, "%d\n", max); }
+{ 
+    for (int i = 0; i < rows; ++i) {
+        int max = 0;
+        for (int j = 0; j < cols; ++j) {
+            if (pMatrix[i][j] < 0)
+                max += 1; 
+        }
+        fprintf(stdout, "%d\n", max); 
+    }
 }
