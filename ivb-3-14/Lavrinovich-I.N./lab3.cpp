@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	char * phrase = strdup("dfjwke ew we 45 wef9 48 wewe 4448 erwer666 wed22e wd5wed5wed65d6dd 5e5e5e555 5533");
 	int m = 0, p = 0, len = strlen(phrase);
 
-	char * NewPhr = new char[len+1];
+	char * NewPhr = new char[len + 1];
 	char * buff = new char[len];
 
 	for (int i = 0; i <= len; i++) {
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 			if(m != 0) {
 				if(!Is3NumberOnly(buff, m)) {
 					for (int n = 0; n < m; n++)
-						NewPhr[p++] = phrase[i-n-1];
+						NewPhr[p++] = phrase[i - n - 1];
 
 					NewPhr[p++] = ' ';
 				}
