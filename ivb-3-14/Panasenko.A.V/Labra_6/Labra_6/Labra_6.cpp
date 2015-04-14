@@ -37,7 +37,8 @@ Item* find(int index);
 
 
 istream &
-operator >> (istream &f, Item &i) {
+operator >> (istream &f, Item &i) 
+{
     f >> i.i;
     f >> i.c;
     f >> i.m;
@@ -45,7 +46,8 @@ operator >> (istream &f, Item &i) {
 }
 
 ostream &
-operator << (ostream &f, const Item &i) {
+operator << (ostream &f, const Item &i)
+{
     f << i.i << '\t';
     f << i.c << '\t';
     f << i.m << endl;
@@ -53,7 +55,8 @@ operator << (ostream &f, const Item &i) {
 }
 
 void
-Load_Array() {
+Load_Array() 
+{
 
     if (Base != nullptr) {
 	delete[] Base;
@@ -73,7 +76,8 @@ Load_Array() {
 }
 
 void
-Save_Array() {
+Save_Array() 
+{
 
     std::ofstream f("base.txt");
     f << len << '\n';
@@ -84,7 +88,8 @@ Save_Array() {
 }
 
 void
-Sort_Array() {
+Sort_Array() 
+{
     for (int j = 1; j <= (len - 1); j++) {
         for (int i = 0; i < len - j; i++) {
             if (Base[i] < Base[i + 1]) {
@@ -97,18 +102,19 @@ Sort_Array() {
 }
 
 void
-Print_Array() {
+Print_Array() 
+{
     cout << "номер\tстоимость\tколличество\n";
     for (int i = 0; i < len; i++)
     cout << Base[i];
 }
 
 Item*
-Find(int index) {
+Find(int index) 
+{
     for (int i = 0; i < len; i++)
-    if (Base[i].i == index)
-        return &Base[i];
-
+        if (Base[i].i == index)
+            return &Base[i];
     return nullptr;
 }
 
