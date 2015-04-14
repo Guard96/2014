@@ -37,3 +37,16 @@ main()
 	free(data);
 	return EXIT_SUCCESS;
 }
+					NewPhr[p++] = ' ';
+				}
+				m = 0;
+			}
+		} else
+			buff[m++] = phrase[i];
+	}
+	NewPhr[p] = 0;
+	printf("%s\n%s\n", phrase, NewPhr);
+	free(phrase);
+	delete[] buff, NewPhr;
+	return 0;
+}
