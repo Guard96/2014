@@ -9,7 +9,7 @@ main()
 	in >> len;
 	len--;
 
-	int* data = new int[len*2];
+	int* data = new int[len * 2];
 	for (int i = 0; i < len; i++) {
 		in >> data[i];
 		data[len + i] = data[i];
