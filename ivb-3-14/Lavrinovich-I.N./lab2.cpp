@@ -239,7 +239,7 @@ __findNullElement(double **pMatrix, int rows, int cols)
 	int n = 0;
 	for (int i = 0; i < rows; ++i) {
 		for (int j = 0; j < cols; ++j) {
-			if (pMatrix[i][j] = 0) {
+			if (pMatrix[i][j] == 0) {
 				result += pMatrix[i][j];
 				++n;
 			}
