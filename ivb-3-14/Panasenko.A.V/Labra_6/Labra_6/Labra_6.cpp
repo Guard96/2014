@@ -17,11 +17,11 @@ public:
 	int i, c, m;
 
 	bool operator < (const Item s) {
-		return c < s.c;
+            return c < s.c;
 	}
 
 	bool operator >(const Item s) {
-		return c > s.c;
+            return c > s.c;
 	}
 };
 
@@ -38,101 +38,102 @@ Item* find(int index);
 
 istream &
 operator >> (istream &f, Item &i) {
-	f >> i.i;
-	f >> i.c;
-	f >> i.m;
-	return f;
+    f >> i.i;
+    f >> i.c;
+    f >> i.m;
+    return f;
 }
 
 ostream &
 operator << (ostream &f, const Item &i) {
-	f << i.i << '\t';
-	f << i.c << '\t';
-	f << i.m << endl;
-	return f;
+    f << i.i << '\t';
+    f << i.c << '\t';
+    f << i.m << endl;
+    return f;
 }
 
 void
 Load_Array() {
 
-	if (Base != nullptr) {
-		delete[] Base;
-		Base = nullptr;
-	}
-	std::ifstream f("base.txt");
-	f >> len;
+    if (Base != nullptr) {
+	delete[] Base;
+	Base = nullptr;
+    }
+    std::ifstream f("base.txt");
+    f >> len;
 
-	Base = new Item[len];
-	for (int i = 0; i < len; i++)
-		f >> Base[i];
-	f.close();
+    Base = new Item[len];
+    for (int i = 0; i < len; i++)
+        f >> Base[i];
 
-	int size = sizeof(Item);
-	printf("Выделенно %d байт на элемент!\n", size * len, size);
+    f.close();
+
+    int size = sizeof(Item);
+    printf("Выделенно %d байт на элемент!\n", size * len, size);
 }
 
 void
 Save_Array() {
 
-	std::ofstream f("base.txt");
-	f << len << '\n';
-	for (int i = 0; i < len; i++)
-		f << Base[i];
+    std::ofstream f("base.txt");
+    f << len << '\n';
+    for (int i = 0; i < len; i++)
+        f << Base[i];
 
-	f.close();
+    f.close();
 }
 
 void
 Sort_Array() {
-	for (int j = 1; j <= (len - 1); j++) {
-		for (int i = 0; i < len - j; i++) {
-			if (Base[i] < Base[i + 1]) {
-				Item m = Base[i + 1];
-				Base[i + 1] = Base[i];
-				Base[i] = m;
-			}
-		}
-	}
+    for (int j = 1; j <= (len - 1); j++) {
+        for (int i = 0; i < len - j; i++) {
+            if (Base[i] < Base[i + 1]) {
+                Item m = Base[i + 1];
+                Base[i + 1] = Base[i];
+                Base[i] = m;
+            }
+        }
+    }
 }
 
 void
 Print_Array() {
-	cout << "номер\tстоимость\tколличество\n";
-	for (int i = 0; i < len; i++)
-		cout << Base[i];
+    cout << "номер\tстоимость\tколличество\n";
+    for (int i = 0; i < len; i++)
+    cout << Base[i];
 }
 
 Item*
 Find(int index) {
-	for (int i = 0; i < len; i++)
-	if (Base[i].i == index)
-		return &Base[i];
+    for (int i = 0; i < len; i++)
+    if (Base[i].i == index)
+        return &Base[i];
 
-	return nullptr;
+    return nullptr;
 }
 
 int
 main()
 {
-	setlocale(0, "Russian");
-	Load_Array();
-	cout <<("Сортировка по стоимости\n");
-	Sort_Array();
-	Print_Array();
-	printf("Введите номер товара:");
-	int n = 0;
-	cin >> n;
+    setlocale(0, "Russian");
+    Load_Array();
+    cout <<("Сортировка по стоимости\n");
+    Sort_Array();
+    Print_Array();
+    printf("Введите номер товара:");
+    int n = 0;
+    cin >> n;
 
-	Item * find = Find(n);
+    Item * find = Find(n);
 
-	if (find != nullptr)
-		cout << *find;
-	else
-		cout << "товар не найден \n";
-	Save_Array();
+    if (find != nullptr)
+        cout << *find;
+    else
+        cout << "товар не найден \n";
+    Save_Array();
 
-	system("pause");
-	return 0;
+    system("pause");
+    return 0;
 }
 
 

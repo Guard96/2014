@@ -139,12 +139,12 @@ int main()
 	int c2 = CountPositiveElement(m2);
 
 	if (c1 > c2) {
-		printf("Â ïåðâîé ìàòðèöå ñðåäíåå àðèôìåòè÷åñêîå ïîëîæèòåëüíûõ ýëåìåíòîâ ðàâíî .\n", CountPositiveElement(m1));
-		printf("Â ïåðâîé ìàòðèöå %i îòðèöàòåëüíûõ ýëåìåíòîâ .\n", CountNegativeElement(m1));
+		printf("среднее арифметическое положительных элементов матрицы 1 .\n", CountPositiveElement(m1));
+		printf("количество отрицательных элементов матрицы 1 .\n", CountNegativeElement(m1));
 	}
 	else {
-		printf("Âî âòîðîé ìàòðèöå ñðåäíåå àðèôìåòè÷åñêîå ïîëîæèòåëüíûõ ýëåìåíòîâ ðàâíî .\n", CountPositiveElement(m2));
-		printf("Â ïåðâîé ìàòðèöå %i îòðèöàòåëüíûõ ýëåìåíòîâ .\n", CountNegativeElement(m2));
+		printf("среднее арифметическое положительных элементов матрицы 2 .\n", CountPositiveElement(m2));
+		printf("количество отрицательных элементов матрицы 2 .\n", CountNegativeElement(m2));
 	}
 	system("pause");
 	return EXIT_SUCCESS;
