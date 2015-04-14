@@ -82,7 +82,7 @@ int main()
 
 	std::vector<Item *> items;
 
-	char * input = _strdup("testing+322 l / 2,2 wat = 75,3,14");
+	char * input = _strdup("testing+322_l / _ 2,2 w_at = 75,3,14");
 	int len = strlen(input);
 	char c;
 	bool flag_number = false;
@@ -91,17 +91,13 @@ int main()
 
 	printf("Исходная строка:\n%s\n\n", input);
 
-	for (int i = 0; i <= len; i++)
-	{
+	for (int i = 0; i <= len; i++) {
 		c = input[i];
 		if (flag_number && c == ',' && !use_tochka) {
 			use_tochka = true;
 			buff.push_back(c);
-		}
-		else
-		{
-			if (isSymbol(c))
-			{
+		} else {
+			if (isSymbol(c) && !(c == '_'&&buff.size())) {
 				if (buff.size() != 0) {
 					char * temp = new char[buff.size() + 1];
 					int _y = 0;
@@ -122,9 +118,7 @@ int main()
 				}
 				if (c != 0)
 					items.push_back(new Symbol(c));
-			}
-			else
-			{
+			} else {
 				if (flag_number || buff.size() == 0)
 					flag_number = isNumber(c);
 
@@ -136,10 +130,10 @@ int main()
 	for (auto i = items.begin(); i != items.end(); i++)
 		(*i)->print();
 
-
-
+	
 	for (auto i = items.begin(); i != items.end(); i++)
 		delete *i;
+
 	items.clear();
 	free(input);
 
