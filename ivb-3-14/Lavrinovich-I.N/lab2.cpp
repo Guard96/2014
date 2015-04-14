@@ -262,5 +262,4 @@ product_Element(double **pMatrix, int rows, int cols)
 		}
 	}
 	return result;
-}lt;
 }
