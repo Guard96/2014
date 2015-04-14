@@ -153,7 +153,8 @@ public:
             if (_buffer.size() > 0) { 
                     row.push_back(atof(_buffer.c_str()));
             }
-            if (isEndOfLine()) { skipEndOfLine();
+            if (isEndOfLine()) { 
+                skipEndOfLine();
                 matrix.push_back(row);
                 row.clear();
             } 
