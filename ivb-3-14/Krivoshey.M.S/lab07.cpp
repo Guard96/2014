@@ -110,8 +110,7 @@ int main()
 						flag_number = false;
 						use_tochka = false;
 						delete temp;
-					}
-					else
+					} else
 						items.push_back(new Litera(temp));
 
 					buff.clear();
