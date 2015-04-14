@@ -227,7 +227,7 @@ __findZeroElement(double **pMatrix, int rows, int cols)
     double result = 0;
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            if (pMatrix[i][j] = 0)
+            if (pMatrix[i][j] == 0)
                 result += 1;
         } 
     }
