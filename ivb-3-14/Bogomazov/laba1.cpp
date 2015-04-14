@@ -30,7 +30,7 @@ calculate(double matrix[], int elements, const double part)
     }
     return result;
 }
- void max_mr(double mr1, double mr2, double mr3)
+void max_mr(double mr1, double mr2, double mr3)
 {
     if (mr1 == mr2)
             fprintf(stdout, "Matrix1 == Matrix2\n");
