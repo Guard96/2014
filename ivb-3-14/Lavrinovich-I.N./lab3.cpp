@@ -47,7 +47,6 @@ int main(int argc, char **argv)
 	NewPhr[p] = 0;
 	printf("%s\n%s\n", phrase, NewPhr);
 	free(phrase);
-	free(buff);
-	free(NewPhr);
+	delete[] buff, NewPhr;
 	return 0;
 }
