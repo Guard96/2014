@@ -3,6 +3,13 @@
 #include <cstdlib>
 #include <cstring>
 
+#ifdef __WIN32__
+#define _PAUSE "pause"
+#else
+#define _PAUSE "echo -n press enter to continue;read" //Smth like winPAUSE analog.
+#endif
+
+
 static double **
 __loadMatrix(
     const char * const szFileName, 
@@ -20,10 +27,10 @@ __exception(const char * const szMessage)
 
 static void
 __printMatrix(double **pMatrix, int rows, int cols);
-static double
-__findMaxElement(double **pMatrix, int rows, int cols);
+static int
+__findNumZeroElements(double **pMatrix, int rows, int cols);
 static void
-__outputMaxElements(double **pMatrix, int rows, int cols);
+__outputAverageOfElements(double **pMatrix, int rows, int cols);
 
 int
 main(int argc, char **argv)
@@ -44,20 +51,33 @@ main(int argc, char **argv)
 	fprintf(stdout, "Matrix N2:\n");
 	__printMatrix(matrix2, mRows2, mCols2);
 
-	/** Find max element */
-	double max1 = __findMaxElement(matrix1, mRows1, mCols1);
-	double max2 = __findMaxElement(matrix2, mRows2, mCols2);
-	if (max1 > max2) {
+	/** Find num of zero elements */
+	
+	
+	int num1 = __findNumZeroElements(matrix1, mRows1, mCols1);
+	int num2 = __findNumZeroElements(matrix2, mRows2, mCols2);
+	if (num1 < num2) {
 		fprintf(stdout, "Output matrix N1:\n");
-		__outputMaxElements(matrix1, mRows1, mCols1);
+		__outputAverageOfElements(matrix1, mRows1, mCols1);
 	} else {
-		fprintf(stdout, "Output matrix N2:\n");
-		__outputMaxElements(matrix2, mRows2, mCols2);
+		if (num1 != num2) {
+			fprintf(stdout, "Output matrix N2:\n");
+			__outputAverageOfElements(matrix2, mRows2, mCols2);
+		} else {
+			
+			fprintf(stdout, "Output matrix N1&2 as number of zero elements in them is the same:\n");
+			
+			fprintf(stdout, "Output matrix N1:\n");
+			__outputAverageOfElements(matrix1, mRows1, mCols1);
+			
+			fprintf(stdout, "Output matrix N2:\n");
+			__outputAverageOfElements(matrix2, mRows2, mCols2);
+		}
 	}
 
 	__destroyMatrix(matrix1, mRows1, mCols1);
 	__destroyMatrix(matrix2, mRows2, mCols2);
-	system("pause");
+	int errWithSysPause = system(_PAUSE);
 	return EXIT_SUCCESS;
 }
 
@@ -241,17 +261,36 @@ __findMaxElement(double **pMatrix, int rows, int cols)
 	}
 	return result;
 }
+int
+__findNumZeroElements(double **pMatrix, int rows, int cols)
+{
+	int result = 0;
+	for (auto i = 0; i < rows; ++i) {
+		for (auto j = 0; j < cols; ++j) {
+			if (pMatrix[i][j] == 0)
+				++result;
+		}
+	}
+	return result;
+}
+
 
 void
-__outputMaxElements(double **pMatrix, int rows, int cols)
+__outputAverageOfElements(double **pMatrix, int rows, int cols)
 {
 	for (auto i = 0; i < rows; ++i) {
-		double max = pMatrix[i][0];
+		double sum = pMatrix[i][0];
+		int num = 0;
+		double av=0;
 		for (auto j = 0; j < cols; ++j) {
-			if (max <= pMatrix[i][j])
-				max = pMatrix[i][j];
+			if (pMatrix[i][j] > 0) {
+				sum += pMatrix[i][j];
+				++num;
+			}
 		}
-		fprintf(stdout, "%3.5f\n", max);
+		if (num != 0)
+			av = sum/num;
+		fprintf(stdout, "%3.5f\n", av);
 	}
 }
 
