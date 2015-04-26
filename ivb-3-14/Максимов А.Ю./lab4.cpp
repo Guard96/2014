@@ -2,13 +2,11 @@
 #include <cstdio>
 #include <clocale>
 
-#define EXIT_SUCCESS 0;
-//#include <cstdlib>
+#include <cstdlib>
 //#include <cctype>
 //#include <cstring>
 //#include <sstream>
 //#include <iostream>
-
 static const char * const InputFileName = "input_4.txt";
 static const char * const OutputFileName = "output_4.txt";
 
@@ -21,11 +19,11 @@ main(int argc, char **)
 
 	 fd = fopen ( InputFileName , "r" );
 	 if( fd != NULL) {
-	 	long int inp[2];
+	 	long long int inp[3];
 	 	
-	 	fscanf(fd, "%li %li %li", &inp[0], &inp[1], &inp[2]);
+	 	fscanf(fd, "%lli %lli %lli", &inp[0], &inp[1], &inp[2]);
 		fclose(fd);
-		long int max, min = inp[0];
+		long long int max, min = inp[0];
 		
 		for (int i = 1; i <= 2; i++) 
 		{
@@ -37,12 +35,12 @@ main(int argc, char **)
 			};
 		}
 
-		FILE *fd_2; //Something used to smash stack. Wtf.
+		FILE *fd_2;
 		fd_2 = fopen ( OutputFileName , "w");
 		if (fd_2 != NULL) 
 		{
-			long answer = max - min;
-			fprintf(fd_2, "%li", answer );
+			long long answer = max - min;
+			fprintf(fd_2, "%lli", answer );
 		}
 	} else {
 		fprintf(stderr, "Входной файл \"%s\" не найден.\n", InputFileName);

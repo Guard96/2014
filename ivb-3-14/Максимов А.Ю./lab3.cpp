@@ -1,138 +1,108 @@
-#pragma warning(disable : 4996)
+//#define DEBUG
+//#pragma warning(disable: 4996)
 #include <cstdio>
+#include <clocale>
 #include <cstdlib>
-#include <cstring>
-#include <cctype>
-
-/** Задание */
-/** Строка состоит из слов, разделенных одним
-*** или несколькими пробелами. Поменяйте
-*** местами наибольшее по длине слово и наименьшее
-***/
-
-struct __Token
+//#include <cctype>
+//#include <cstring>
+//#include <sstream>
+//#include <iostream>
+unsigned long fsize(char* file)
 {
-	int loc;
-	int len;
-};
+    FILE * f = fopen(file, "r");
+    fseek(f, 0, SEEK_END);
+    unsigned long len = (unsigned long)ftell(f);
+    fclose(f);
+    return len;
+}
+static const char * const InputFileName = "input_3.txt";
+static const unsigned long InputFileSize = fsize((char *) InputFileName); //Ит воркс, по крайней мере.
+FILE *fd;	//Пусть будет глобальным. Каждый раз передавать вниз дескриптор.. Брр.
 
-static void
-__do(char *in);
-/** Найти минимальное слови и максимальное */
-static void
-__find(char *in, struct __Token *min, struct __Token *max);
-/** Заменить два слова */
-static void
-__swap(char *in, struct __Token *first, struct __Token *second);
-static int
-__is_whitespace();
+//static const char * const OutputFileName = "output_3.txt";
+int recurse (int curpos, short prevmode);
 
 int
-main(int argc, char **argv)
+main(int argc, char **)
 {
-	char *buffer = strdup("Now that we've got our ServiceHost created, we need to configure some endpoints");
-	fprintf(stdout, "%s\n", buffer);
-	__do(buffer);
-	fprintf(stdout, "%s\n", buffer);
-	free(buffer);
-	system("pause");
+	setlocale(LC_ALL, "Russian");
+#ifdef DEBUG
+fprintf(stdout,"%li\n",InputFileSize);
+#endif
+	fd = fopen ( InputFileName , "r" );
+	if( fd != NULL) {
+
+		int allresult = -1;
+
+
+	 	allresult = recurse (SEEK_SET, 0); //начинаем погружение.
+
+	 	fprintf(stdout, "%i\n", allresult);
+		fclose(fd);
+	} else {
+		fprintf(stderr, "Входной файл \"%s\" не найден.\n", InputFileName);
+	}
+	fprintf(stdout, "Нажмите любую клавишу для продолжения...");
+	fgetc(stdin);
 	return EXIT_SUCCESS;
 }
 
-void
-__do(char *buffer)
-{
-	struct __Token min;
-	struct __Token max;
+/*	prevmode используется на этой глубине, curmode будет использоваться глубже.
+ *	mode устанавливается в зависимости от того, какой символ возможен
+ *	0		=>	предыдущее число было 4+ (не может составлять символ с предыдущей цифрой)
+ *	10		=>	предыдущее число было 1..2 (составит символ в любом случае.)
+ * 	1..3	=>	предыдущее число было 3 (составит символ только если текущее число <= 3)
+ *	TODO: изменить логику так, чтоб сделать меньше if'ов. Возможно, стоит сделать это через максимально возможное число
+ *	Принято. Даже, кажется, реализовано.
+ *		
+ *	Как это работает:
+ *	Функция принимает текущую позицию и то, может ли текущее число в связке с предыдущим составить символ
+ *	(вернее, какой должна быть текущая цифра, чтоб составить символ с предыдущей), проверяет, возможно ли это.
+ *	Если возможно, составляет и идёт глубже, предупреждая следующий уровень о том, что составить символ пока не выйдет
+ *	Дальше пытается понять, есть ли возможность составить символ со следующей цифрой.
+ *	И передаёт результат своей умственной деятельности вглубь.
+ *	когда все более глубокие уровни "всплывут", текущий уровень тоже "всплывёт".
+ */
 
-	__find(buffer, &min, &max);
-	__swap(buffer, &min, &max);
-}
-
-#define SKIPWS(In) \
-			while (*(In) != 0 && iswspace( (int)(*(In)) )) {    \
-		++(In);                                             \
-		++id;                                               \
-				}
-
-void
-__find(char *in, struct __Token *min, struct __Token *max)
-{
-	char *it = in;
-	char *next = it;
-	int id = 0;
+int recurse (int curpos, short prevmode)
+{	
+	int result=0;	//сколько вариантов у нас будет с этого уровня рекурсии. Памяти бы хватило. По крайней мере, один путь уже есть.
+	fseek(fd, curpos*sizeof(char), SEEK_SET ); // А вдруг мы провалились сюда после конца рекурсии где-то далеко внизу? 
+	if (curpos >= InputFileSize)
+	{
+		return result + 1;		//мы достигли дна. Всплываем!
+	} else {
+		int curnum=-1;	//текущее число. 
+		int nexnum=-1;
 
 
-	memset(min, 0, sizeof(struct __Token));
-	memset(max, 0, sizeof(struct __Token));
-
-	SKIPWS(it);
-	while (*it != 0) {
-		if (iswspace((int)(*it))) {
-			int len = it - next;
-			if (min->len == 0) {
-				min->len = len;
-				min->loc = id - len;
-
-				max->len = len;
-				max->loc = id - len;
-			} else {
-				if (len > max->len) {
-					max->len = len;
-					max->loc = id - len;
-				}
-				if (len < min->len) {
-					min->len = len;
-					min->loc = id - len;
-				}
+		//Тут небольшая отдельная область видимости для переменной ЦЭ.
+			{	//Кажется, это может не сработать. Но зачем нам по лишней переменной на каждый уровень рекурсии?
+				char c = fgetc (fd);	//ты умрёшь. Надеюсь.
+				curnum = atoi (&c); 
 			}
-			SKIPWS(it);
-			next = it;
+
+		if (prevmode - curnum > 0)
+		{ //Может составить символ с предыдущим. См. описание в комментарии до тела функции
+			result += recurse (curpos + 1, 0); 	//Идём глубже. И да, мы сейчас не сможем использовать текущую цифру глубже.
+												//Покажете мне закодированный тремя знаками символ -- с меня чай.
+												// m_0{2,}_ не считается, в условии не сказано обработать всё.
+		} 
+		int curmode = 0; // Думаю, стоит объявить это как можно позже.
+		if (curnum == 3)
+		{
+			curmode = 4;	//См. комментарий перед функцией, да. 
+		} else if (curnum < 3 && curnum > 0)
+		{
+			curmode = 10;	//Там описано поведение переменной mode
 		}
-		++it;
-		++id;
+
+		// Даже если это число может составить символ с предыдущим, стоит задуматься: а не стоит ли нам взять
+		// текущую цифру как отдельный символ?
+								
+		result += recurse (curpos + 1, curmode);
+
+		
 	}
-}
-
-
-void
-__swap(char *in, struct __Token *first, struct __Token *second)
-{
-	char *out = (char *)calloc(1, strlen(in) + 1);
-	struct __Token *d1 = first;
-	struct __Token *d2 = second;
-	int i = 0;
-	int k = 0;
-
-	/** Ищем ближайший */
-	if (first->loc > second->loc)
-		d1 = second, d2 = first;
-
-	/** Копируем до первого */
-	while (in[i] != 0 && i < d1->loc)
-		out[i] = in[i++];
-
-	/** Записываем первое слово */
-	k = d2->loc;
-	for (i = d1->loc; i < d1->loc + d2->len; ++i) {
-		out[i] = in[k++];
-	}
-	/** Записываем продолжение */
-	k = d1->loc + d1->len;
-	for (; i < d2->loc - d1->len + d2->len; ++i) {
-		out[i] = in[k++];
-	}
-	/** Записываем второе слово */
-	k = d1->loc;
-	for (; k < d1->loc + d1->len; ++k, ++i) {
-		out[i] = in[k];
-	}
-	/** Записываем продолжение */
-	k = d2->loc + d2->len;
-	while (in[i] != 0)
-		out[i++] = in[k++];
-	/** Копируем временную строку */
-	strcpy(in, out);
-	/** Освобождаем временную строку*/
-	free(out);
+	return result;
 }
