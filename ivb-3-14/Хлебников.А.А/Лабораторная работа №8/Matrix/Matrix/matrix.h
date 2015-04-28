@@ -157,12 +157,26 @@ public:
 	return true;
      }
 	
-    /**Минор. Вариант 13 (2)*/
-    _Type minor(int row, int col) const
-    {
-        return _Type();
-    }
-
+    /**Минор. Вариант 13 (2) Панасенко А.В. */
+	// если я правильно понял, то row и col - границы минора 
+	_Type minor(int row, int col) const
+	{
+		Matrix <_Type> my;
+		int _main = 0;
+		if ((col && row) > 1) {
+			for (int i = 0; i < row;) {
+				for (int j = 0; j < col;) {
+					if
+						my[i][j] = _value[i][j];
+				}
+			}
+			my.determinate();
+		}
+		else if ((col && row) == 1)
+			return _value[0][0];
+		else if ((col && row) < 0)
+			return -1;
+	}
 
     _Type get(int row, int col) const
     {

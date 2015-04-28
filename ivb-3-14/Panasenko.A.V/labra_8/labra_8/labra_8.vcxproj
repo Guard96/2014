@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1398A1E9-78F8-450B-8268-26D52E317579}</ProjectGuid>
+    <ProjectGuid>{EC6379C0-224E-4A48-9DAE-FC3E9E564F87}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>labra_8</RootNamespace>
   </PropertyGroup>
@@ -78,7 +78,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\..\..\Хлебников.А.А\Лабораторная работа №8\Matrix\Matrix\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Хлебников.А.А\Лабораторная работа №8\Matrix\Matrix\matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
