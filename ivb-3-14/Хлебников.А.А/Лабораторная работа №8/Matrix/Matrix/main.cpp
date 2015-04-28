@@ -9,9 +9,9 @@ main(int argc, char **argv)
     Matrix<int> m2(100, 100, 0);
     std::cout << m1 << std::endl;
     
-	/** Симметричная. Вариант 12*/
-	/**	Кривошея Михаил **/
-	std::cout <<"Synnetric: " << (m1.isSynnetric() ? "True" : "False") << std::endl;
+    /** Симметричная. Вариант 12*/
+    /**	Кривошея Михаил **/
+    std::cout <<"Synnetric: " << (m1.isSynnetric() ? "True" : "False") << std::endl;
 	
     auto m = m1 - m2;
     m = m1 ^ 2;
