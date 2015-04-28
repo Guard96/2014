@@ -21,7 +21,7 @@ __exception(const char * const szMessage)
 
 static void
 __printMatrix(double **pMatrix, int rows, int cols);
-static double
+static void
 __product_Element(double **pMatrix, int rows, int cols);
 static double
 __findNullElement(double **pMatrix, int rows, int cols);
@@ -50,12 +50,10 @@ main(int argc, char **argv)
 	double out;
 	if (avg1 > avg2) {
 		fprintf(stdout, "Output matrix N2:\n");
-		out =__product_Element(matrix2 , mRows2, mCols2);
-		fprintf(stdout, out);
+		__product_Element(matrix2 , mRows2, mCols2);
 	} else {
 		fprintf(stdout, "Output matrix N1:\n");
-		out =__product_Element(matrix1 , mRows1, mCols1);
-		fprintf(stdout, out);
+		__product_Element(matrix1 , mRows1, mCols1);
 	}
 
 	__destroyMatrix(matrix1, mRows1, mCols1);
@@ -235,31 +233,27 @@ __printMatrix(double **pMatrix, int rows, int cols)
 double
 __findNullElement(double **pMatrix, int rows, int cols)
 {
-	double result = 0;
 	int n = 0;
 	for (int i = 0; i < rows; ++i) {
 		for (int j = 0; j < cols; ++j) {
 			if (pMatrix[i][j] == 0) {
-				result += pMatrix[i][j];
 				++n;
 			}
 		}
 	}
-	return result;
+	return n;
 }
 
-static double
+static void
 product_Element(double **pMatrix, int rows, int cols)
 {
-	double result = 0;
-	int n = 0;
 	for (int i = 0; i < rows; ++i) {
+		double result = 0;
 		for (int j = 0; j < cols; ++j) {
-			if (pMatrix[i][j] > 0) {
+			if (pMatrix[i][j] != 0) {
 				result *= pMatrix[i][j];
-				++n;
 			}
 		}
+		fprintf(stdout, "Line %i: %i\n", i, result);
 	}
-	return result;
 }
