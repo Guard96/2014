@@ -20,8 +20,11 @@ test_is_Minor()
 {
 	/** Минор. Вариант 13*/
 	/**	Панасенко Андрей **/
-	Matrix<int> m(100, 100, 0);
-
+	Matrix<int> m(5, 5, 0);
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++)
+			m.get(i, j);
+	}
 	int row = 4, col = 4;
 	std::cout << "Матрица " << m << std::endl;
 	std::cout << "Минор: " << m.minor(row, col) << std::endl;
