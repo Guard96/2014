@@ -146,35 +146,33 @@ public:
     bool isSymmetric() const
     {
         if (!_value.size() || _value.size() != _value[0].size())
-	    return false;
-
-	for (int i = 0; i < _value.size(); i++) {
-	    for (int k = i + 1; k < _value.size(); k++) {
+			return false;
+		for (int i = 0; i < _value.size(); i++) {
+			for (int k = i + 1; k < _value.size(); k++) {
                 if (_value[i][k] != _value[k][i])
-		    return false;
+					return false;
             }
-	}
-	return true;
+		}
+			return true;
      }
 	
     /**Минор. Вариант 13 (2) Панасенко А.В. */
 	// если я правильно понял, то row и col - границы минора 
 	_Type minor(int row, int col) const
 	{
-		Matrix <_Type> my;
-		int _main = 0;
-		if ((col && row) > 1) {
-			for (int i = 0; i < row;) {
-				for (int j = 0; j < col;) {
-					if
-						my[i][j] = _value[i][j];
+		Matrix <_Type> my(row, col, 0);
+
+		if (col > 1 && row > 1) {
+			for (int i = 0; i < row; i++) {
+				for (int j = 0; j < col; j++) {
+					my.get(i, j) = _value[i][j];
 				}
 			}
-			return my.determinate();
+			return my.determinant();
 		}
-		else if ((col && row) == 1)
+		else if (col == 1 && row == 1)
 			return _value[0][0];
-		else if ((col && row) < 0)
+		else if (col <= 0 && row <= 0)
 			return -1;
 	}
 
