@@ -171,7 +171,8 @@ public:
         auto line = _value[row];
         if (col >= line.size())
             throw MatrixException("Col");
-        line[col] = value;
+        //line[col] = value;
+        _value[row][col] = value;
     }
 private:
     template<typename U> friend std::ostream& operator<<(std::ostream& os, const Matrix<U>& m);
