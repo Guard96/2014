@@ -180,7 +180,7 @@ private:
 template<typename _Type>
 std::ostream &operator<<(std::ostream &output, const Matrix<_Type> &m)
 {
-    /** Вариант 14 */
+    /** Вариант 14. Максимов*/
     throw std::exception("Не реализовано");
     return output;
 }
