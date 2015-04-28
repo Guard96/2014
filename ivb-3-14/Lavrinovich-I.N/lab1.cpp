@@ -21,7 +21,7 @@ calculate(double matrix[], int elements, const double part)
     int n = 0;
 
     for (i = 0; i < elements; ++i) {
-        if (matrix[i] < part) 
+        if (matrix[i] > part) 
         ++n;
     }
     return n;
@@ -35,11 +35,11 @@ main(int argc, char **argv)
     double mr2 = calculate(m2, MATRIX2, part);
     double mr3 = calculate(m3, sizeof(m3)/sizeof(m3[0]), part);
 
-    if ((mr1 < mr2) && (mr1 < mr3))
+    if ((mr1 > mr2) && (mr1 > mr3))
         fprintf (stdout, "Matrix1\n");
-    if ((mr2 < mr1) && (mr2 < mr3))
+    if ((mr2 > mr1) && (mr2 > mr3))
         fprintf (stdout, "Matrix2\n");
-    if ((mr3 < mr1) && (mr3 < mr2))
+    if ((mr3 > mr1) && (mr3 > mr2))
         fprintf (stdout, "Matrix3\n");
     system("pause");
     return EXIT_SUCCESS;
