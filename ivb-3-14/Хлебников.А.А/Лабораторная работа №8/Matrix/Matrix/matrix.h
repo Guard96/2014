@@ -170,7 +170,7 @@ public:
 						my[i][j] = _value[i][j];
 				}
 			}
-			my.determinate();
+			return my.determinate();
 		}
 		else if ((col && row) == 1)
 			return _value[0][0];
