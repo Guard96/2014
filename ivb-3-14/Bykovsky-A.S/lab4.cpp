@@ -1,5 +1,4 @@
 //вариант 7
-#include "stdafx.h"
 #include <fstream>
 #include <iostream>
 using namespace std;
