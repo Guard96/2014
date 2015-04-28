@@ -9,7 +9,7 @@ main()
 	in >> len;
 	len--;
 
-	int* data = new int[len * 2];
+	int* data = new int[len*2];
 	for (int i = 0; i < len; i++) {
 		in >> data[i];
 		data[len + i] = data[i];
@@ -34,19 +34,6 @@ main()
 	out << i;
 	out.close();
 
-	free(data);
+	delete data;
 	return EXIT_SUCCESS;
-}
-					NewPhr[p++] = ' ';
-				}
-				m = 0;
-			}
-		} else
-			buff[m++] = phrase[i];
-	}
-	NewPhr[p] = 0;
-	printf("%s\n%s\n", phrase, NewPhr);
-	free(phrase);
-	delete[] buff, NewPhr;
-	return 0;
 }
