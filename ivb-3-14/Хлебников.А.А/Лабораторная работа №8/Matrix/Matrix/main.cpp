@@ -2,15 +2,22 @@
 #include <string>
 #include "matrix.h"
 
+void
+__test_isSymmetric()
+{
+    Matrix<int> m(100, 100, 0);
+    
+    /** Симметричная. Вариант 12*/
+    /**	Кривошея Михаил **/
+    std::cout << "Матрица " << m << std::endl;
+    std::cout << "Симметрична: " << (m.isSymmetric() ? "Нет" : "Да") << std::endl;
+}
+
+
 int
 main(int argc, char **argv)
 {
-    Matrix<int> m1(100, 100, 0);
-    Matrix<int> m2(100, 100, 0);
-    std::cout << m1 << std::endl;
-    auto m = m1 - m2;
-    m = m1 ^ 2;
-    m = m1 * 3;
+    __test_isSymmetric();
     system("pause");
     return EXIT_SUCCESS;
 }

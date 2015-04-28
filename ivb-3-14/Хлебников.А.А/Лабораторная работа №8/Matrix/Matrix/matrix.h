@@ -140,13 +140,23 @@ public:
     {
         return false;
     }
-
+    
     /** Симметричная. Вариант 12*/
-    bool isSynnetric() const
+    /**	Кривошея Михаил **/
+    bool isSymmetric() const
     {
-        return false;
-    }
+        if (!_value.size() || _value.size() != _value[0].size())
+	    return false;
 
+	for (int i = 0; i < _value.size(); i++) {
+	    for (int k = i + 1; k < _value.size(); k++) {
+                if (_value[i][k] != _value[k][i])
+		    return false;
+            }
+	}
+	return true;
+     }
+	
     /**Минор. Вариант 13 (2)*/
     _Type minor(int row, int col) const
     {
@@ -171,7 +181,6 @@ public:
         auto line = _value[row];
         if (col >= line.size())
             throw MatrixException("Col");
-        //line[col] = value;
         _value[row][col] = value;
     }
 private:
