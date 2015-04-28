@@ -16,37 +16,37 @@ class NumberFromFileParser
 	FILE               *_fd;
 	std::string         _buffer;
 public:
-	NumberFromFileParser() : _ch(0), _fd(nullptr){}
+	NumberFromFileParser() : _ch(0), _fd(nullptr) {}
 
-	bool eof() const{
+	bool eof () const {
 		return feof(_fd) > 0;
 	}
-	bool next(){
+	bool next () {
 		_ch = fgetc(_fd);
 		return _ch != EOF;
 	}
-	bool isWhitespace() const{
+	bool isWhitespace () const {
 		return isspace((int)_ch) > 0;
 	}
-	bool isDigit() const{
+	bool isDigit () const {
 		return isdigit((int)_ch) > 0;
 	}
-	bool isDot() const{
+	bool isDot () const {
 		return _ch == '.' || _ch == ',';
 	}
-	bool isSign() const{
+	bool isSign () const {
 		return _ch == '-' || _ch == '+';
 	}
-	bool isEndOfLine() const{
+	bool isEndOfLine () const {
 		return _ch == '\r' || _ch == '\n';
 	}
-	void skipWhitespace(){
+	void skipWhitespace () {
 		while (!eof() && isWhitespace() && next());
 	}
-	void skipEndOfLine(){
+	void skipEndOfLine () {
 		while (!eof() && isEndOfLine() && next());
 	}
-	void parseNumber(){
+	void parseNumber () {
 		skipWhitespace();
 		while (!eof() && !isWhitespace() &&
 			(isSign() || isDot() || isDigit())) {
@@ -54,11 +54,11 @@ public:
 			next();
 		}
 	}
-	void put(){
+	void put () {
 		_buffer.push_back(_ch);
 	}
 
-	std::vector<std::vector<Type>> parse(const char * const  name){
+	std::vector<std::vector<Type>> parse(const char * const  name) {
 		std::vector<std::vector<Type>> matrix;
 		matrix.clear();
 		std::vector<Type> row;
@@ -87,7 +87,7 @@ public:
 	}
 };
 
-int __findMaxElement(matrix m){
+int __findMaxElement (matrix m) {
 	int max = *m.begin()->begin();
 
 	for (auto i = m.begin(); i != m.end(); i++)
@@ -98,7 +98,7 @@ int __findMaxElement(matrix m){
 	return max;
 }
 
-void __outputCount(matrix m){
+void __outputCount (matrix m) {
 	int count;
 
 	for (auto i = m.begin(); i != m.end(); i++){
@@ -112,7 +112,7 @@ void __outputCount(matrix m){
 	}
 }
 
-void PrintMatrix(matrix m){
+void PrintMatrix (matrix m) {
 	for (auto i = m.begin(); i != m.end(); i++)
 	{
 		for (auto j = i->begin(); j != i->end(); j++)
@@ -122,7 +122,7 @@ void PrintMatrix(matrix m){
 	printf("\n");
 }
 
-int main(int argc, char **argv)
+int main (int argc, char **argv)
 {
 	setlocale(0, "Russian");
 	if (argc < 3)
