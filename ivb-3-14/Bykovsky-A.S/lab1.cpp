@@ -1,5 +1,4 @@
 //Вариант 7  
-#include "stdafx.h"
 #include <conio.h>
 #include <stdio.h>
 #include <iostream>
@@ -15,8 +14,8 @@ int main()
     //создадим 3 массива размерностью 100 и рандомными числами(-50;50)
     const int SIZE = 100;
     int a1[SIZE];
-	int a2[SIZE];
-	int a3[SIZE];
+    int a2[SIZE];
+    int a3[SIZE];
     int i = 0; //для циклов
     int s[3] = {0, 0, 0}; //суммы элементов 3-х массивов
     int min_s;
