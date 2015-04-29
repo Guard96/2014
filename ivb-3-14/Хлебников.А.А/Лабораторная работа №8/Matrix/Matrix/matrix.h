@@ -162,26 +162,22 @@ public:
 	{
 		Matrix <_Type> my(row, col, 0);
 
-		if (col > 1 && row > 1) {
-			for (int i = 0; i < row; i++) {
-				for (int j = 0; j < col; j++) {
-					my.get(i, j) = _value[i][j];
-				}
+		for (int i = 0, i2 = 0; i < _value.size(); i++, i2++) {
+			for (int j = 0, j2 = 0; j < _value.size(); j++, j2++) {
+				if (i == row) i++;
+				if (j == col) j++;
+				my.put(i2, j2, _value[i][j]);
 			}
-			return my.determinant();
 		}
-		else if (col == 1 && row == 1)
-			return _value[0][0];
-		else if (col <= 0 && row <= 0)
-			return -1;
+		return my.determinant();
 	}
 
     _Type get(int row, int col) const
     {
-        if (row >= _value.size())
+        if ((unsigned int) row >= _value.size())
             throw MatrixException("Row");
         auto line = _value[row];
-        if (col >= line.size())
+		if ((unsigned int) col >= line.size())
             throw MatrixException("Col");
         return line[col];
     }
