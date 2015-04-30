@@ -25,8 +25,9 @@ class Matrix {
     typedef std::vector<_Type>      MatrixLine;
     typedef std::vector<MatrixLine> MatrixValue;
 
-    MatrixValue _value;
-public:    
+public:   
+
+	MatrixValue _value;
     Matrix(int rows, int cols, _Type def)
     {
         clear(rows, cols, def);
@@ -157,10 +158,9 @@ public:
      }
 	
     /**Минор. Вариант 13 (2) Панасенко А.В. */
-	// если я правильно понял, то row и col - границы минора 
 	_Type minor(int row, int col) const
 	{
-		Matrix <_Type> my(row, col, 0);
+		Matrix <_Type> my(_value.size() - 1, _value.size() - 1, 0);
 
 		for (int i = 0, i2 = 0; i < _value.size(); i++, i2++) {
 			for (int j = 0, j2 = 0; j < _value.size(); j++, j2++) {
