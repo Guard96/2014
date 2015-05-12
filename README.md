@@ -27,4 +27,4 @@ https://helloacm.com/understanding-tail-recursion-visual-studio-c-assembly-view/
 17. Runtime игра: арканоид - Б. В.
 18. Утилита wget - М. А.
 
-![ScreenShot](http://cs621520.vk.me/v621520183/1e584/cRQS0yao86w.jpg)
+![ScreenShot](https://cs7064.vk.me/c540106/v540106245/21273/9SX81Trm23w.jpg)
