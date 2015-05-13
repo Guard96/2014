@@ -28,3 +28,5 @@ https://helloacm.com/understanding-tail-recursion-visual-studio-c-assembly-view/
 18. Утилита wget - М. А.
 
 ![ScreenShot](https://cs7064.vk.me/c540106/v540106245/21273/9SX81Trm23w.jpg)
+
+![ScreenShot](https://pp.vk.me/c623816/v623816480/33dd0/7n-JUMjXdQI.jpg)
