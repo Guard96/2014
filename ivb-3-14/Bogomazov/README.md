@@ -2,4 +2,4 @@
 
 2)Курсовая работа (в разработке) 
 
-![ScreenShot](http://www.zapiskiprofana.ru/wp-content/uploads/2010/06/d0bcd183d0b6-d0bfd180d0bed0b3d180d0b0d0bcd0bcd0b8d181d182.jpg)
+![ScreenShot](http://cs307108.vk.me/v307108760/8848/NGId-9dA8eQ.jpg)
