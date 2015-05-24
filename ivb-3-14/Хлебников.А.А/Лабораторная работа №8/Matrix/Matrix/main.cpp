@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "matrix.h"
+#include "lab8.h"
 #include <ctime>
 #include <cstring>
 
@@ -13,6 +13,18 @@ __test_isSymmetric()
 	/**	Кривошея Михаил **/
 	std::cout << "Матрица: " << std::endl << m;
 	std::cout << "Симметрична: " << (m.isSymmetric() ? "Нет" : "Да") << std::endl << std::endl;
+}
+
+void
+__test_operatorPlus()
+{
+	/* Сложение матриц. Вариант 2 */
+	/** Avshalumov H.N. **/
+	Matrix<int> a(3, 3, 2);
+	Matrix<int> b(3, 3, 3);
+	std::cout << "Матрица A:" << std::endl << a;
+	std::cout << "Матрица B:" << std::endl << b;
+	std::cout << "Матрица A+B:" << std::endl << a + b << std::endl;
 }
 
 void
@@ -37,6 +49,7 @@ main(int argc, char **argv)
 {
 	setlocale(0, "Russian");
 	__test_isSymmetric();
+	__test_operatorPlus();
 	test_is_Minor();
 	system("pause");
 	return EXIT_SUCCESS;
