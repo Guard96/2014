@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "lab8.h"
+#include "matrix.h"
 #include <ctime>
 #include <cstring>
 
