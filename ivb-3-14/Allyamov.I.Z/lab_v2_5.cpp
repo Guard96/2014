@@ -87,42 +87,48 @@ public:
 	}
 };
 
-int __findMaxElement (matrix m) {
+int
+__findMaxElement (matrix m)
+{
 	int max = *m.begin()->begin();
 
-	for (auto i = m.begin(); i != m.end(); i++)
-	for (auto j = i->begin(); j != i->end(); j++)
-	if (*j > max)
-		max = *j;
-
+	for (auto i = m.begin(); i != m.end(); i++) {
+		for (auto j = i->begin(); j != i->end(); j++) {
+			if (*j > max)
+				max = *j;
+		}
+	}
 	return max;
 }
 
-void __outputCount (matrix m) {
+void
+__outputCount (matrix m)
+{
 	int count;
-
-	for (auto i = m.begin(); i != m.end(); i++){
+	for (auto i = m.begin(); i != m.end(); i++) {
 		count = 0;
-
-		for (auto j = i->begin(); j != i->end(); j++)
+		for (auto j = i->begin(); j != i->end(); j++) {
 			if (*j > 0)
-			count++;
-
+				count++;
+		}
 		printf("%i\n", count);
 	}
 }
 
-void PrintMatrix (matrix m) {
-	for (auto i = m.begin(); i != m.end(); i++)
-	{
-		for (auto j = i->begin(); j != i->end(); j++)
+void
+PrintMatrix (matrix m)
+{
+	for (auto i = m.begin(); i != m.end(); i++) {
+		for (auto j = i->begin(); j != i->end(); j++) {
 			printf("%3.1f\t", *j);
+		}
 		printf("\n");
 	}
 	printf("\n");
 }
 
-int main (int argc, char **argv)
+int
+main (int argc, char **argv)
 {
 	setlocale(0, "Russian");
 	if (argc < 3)
