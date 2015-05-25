@@ -28,6 +28,18 @@ __test_operatorPlus()
 }
 
 void
+__test_operatorMinus()
+{
+	/* Вычитание матриц. Вариант 3 */
+	/** Allyamov I.Z. **/
+	Matrix<int> a(3, 2, 2);
+	Matrix<int> b(2, 2, 8);
+	std::cout << "Матрица A:" << std::endl << a;
+	std::cout << "Матрица B:" << std::endl << b;
+	std::cout << "Матрица A-B:" << std::endl << a - b << std::endl;
+}
+
+void
 test_is_Minor()
 {
 	/** Минор. Вариант 13*/
@@ -50,6 +62,7 @@ main(int argc, char **argv)
 	setlocale(0, "Russian");
 	__test_isSymmetric();
 	__test_operatorPlus();
+	__test_operatorMinus();
 	test_is_Minor();
 	system("pause");
 	return EXIT_SUCCESS;
