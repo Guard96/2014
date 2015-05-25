@@ -83,9 +83,22 @@ public:
 	}
 
 	/** Вычитание матриц. Вариант 3*/
+	/** Allyamov I.Z. **/
 	Matrix<_Type> & operator-(const Matrix<_Type> &that)
 	{
-		return *this;
+		if (getRowCount() != that.getRowCount() ||
+			getColCount() != that.getColCount()) {
+			throw MatrixException("Invalid size");
+			return *this;
+		}
+
+		Matrix<_Type> result(getRowCount(), getColCount(), 0);
+		for (int i = 0; i < getRowCount(); i++){
+			for (int j = 0; j < getColCount(); j++){
+				result.put(i, j, get(i, j) - that.get(i, j));
+			}
+		}
+		return result;
 	}
 
 	/** Умножение на число. Вариант 4*/
