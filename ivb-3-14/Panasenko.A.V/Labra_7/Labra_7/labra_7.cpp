@@ -1,28 +1,44 @@
 #include <cstdlib>
-#include <iostream>
-using std::cin;
-using std::cout;
-using std::endl;
-
+#include <cstdio>
 #include <string>
-using std::string;
-
 #include <vector>
 
+using namespace std;
 
-class A
+class pr
 {
 public:
 	virtual void print(){}
 };
 
-class num : public A
+class Lit : public pr
 {
-	double value;
-
+	char * value;
+	
 	void print()
 	{
-		printf("Число %.1f\n", value);
+		cout << "This is litera " << value << endl; 
+	}
+public:
+	Lit(char * v)
+	{
+		value = v;
+	}
+	
+	~Lit()
+	{
+		free(value);
+	}
+};
+
+
+class num : public pr
+{
+	double value;
+	
+	void print()
+	{
+		cout << "this is number" << value << endl;
 	}
 public:
 	num(double v)
@@ -31,52 +47,33 @@ public:
 	}
 };
 
-class Litera : public Item
+class Symbol : public Pr
 {
-	char * value;
-
-	void print()
-	{
-		printf("Литера \"%s\"\n", value);
-	}
-public:
-	Litera(char * v)
-	{
-		value = v;
-	}
-	~Litera()
-	{
-		free(value);
-	}
-};
-
-class Symbol : public Item
-{
-	char value;
-
-	void print()
-	{
-		printf("Символ '%c'\n", value);
-	}
 public:
 	Symbol(char v)
 	{
 		value = v;
 	}
+private:
+	char value;
+
+	void print()
+	{
+		cout << "this is symbol " << value; 
+	}
 };
 
-bool isNumber(char c)
+bool Nums(char c)
 {
 	return c >= '0' && c <= '9';
 }
 
-bool isLitera(char c)
+bool Lits(char c)
 {
-	return	c >= 'A' && c <= 'Z' ||
-		c >= 'a' && c <= 'z';
+	return	c >= 'A' && c <= 'Z' ||	c >= 'a' && c <= 'z';
 }
 
-bool isSymbol(char c)
+bool Symbols(char c)
 {
 	return !isNumber(c) && !isLitera(c);
 }
@@ -85,67 +82,60 @@ int main()
 {
 	setlocale(0, "Russian");
 
-	std::vector <Item *> items;
-
-	char * input = _strdup("testing+322 l / 2,2 wat = 75,3,14");
-	int len = strlen(input);
-	char c;
+	std::vector<Pr *> pr;
 	bool flag_number = false;
 	bool use_tochka = false;
+	
+	char * input = _strdup("gg olool %228828282 _4672_test");
+	int len = strlen(input);
+	char x;
 	std::vector<char> buff;
 
-	printf("Исходная строка:\n%s\n\n", input);
+	cout << "is the starting line" << input;
 
-	for (int i = 0; i <= len; i++)
-	{
-		c = input[i];
+	for (int i = 0; i <= len; i++) {
+		x = input[i];
 		if (flag_number && c == ',' && !use_tochka) {
 			use_tochka = true;
 			buff.push_back(c);
-		}
-		else
-		{
-			if (isSymbol(c))
-			{
+		} else 	if (Symbols(c) && !(c == '_'&&buff.size())) {
 				if (buff.size() != 0) {
-					char * temp = new char[buff.size() + 1];
-					int _y = 0;
-					for (auto y = buff.begin(); y != buff.end(); y++, _y++)
-						temp[_y] = *y;
-					temp[_y] = 0;
+					int y1 = 0;
+					
+					char * t = new char[buff.size() + 1];
+					for (auto y = buff.begin(); y != buff.end(); y++, y1++)
+						temp[y1] = *y;
+					temp[y1] = 0;
 
 					if (flag_number) {
-						items.push_back(new Num(atof(temp)));
+						items.push_back(new Num(atof(t)));
 						flag_number = false;
 						use_tochka = false;
-						delete temp;
-					}
-					else
-						items.push_back(new Litera(temp));
+						delete t;
+					} else
+						pr.push_back(new Lit(t));
 
 					buff.clear();
 				}
 				if (c != 0)
-					items.push_back(new Symbol(c));
-			}
-			else
-			{
+					pr.push_back(new Symbol(c));
+			} else {
 				if (flag_number || buff.size() == 0)
-					flag_number = isNumber(c);
+					flag_number = Nums(c);
 
 				buff.push_back(c);
 			}
 		}
 	}
 
-	for (auto i = items.begin(); i != items.end(); i++)
+	for (auto i = pr.begin(); i != pr.end(); i++)
 		(*i)->print();
 
-
-
-	for (auto i = items.begin(); i != items.end(); i++)
+	
+	for (auto i = pr.begin(); i != pr.end(); i++)
 		delete *i;
-	items.clear();
+
+	pr.clear();
 	free(input);
 
 	system("pause");
