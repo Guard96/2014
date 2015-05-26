@@ -75,7 +75,7 @@ bool Lits(char c)
 
 bool Symbols(char c)
 {
-	return !isNumber(c) && !isLitera(c);
+	return !Nums(c) && !Lits(c);
 }
 
 int main()
