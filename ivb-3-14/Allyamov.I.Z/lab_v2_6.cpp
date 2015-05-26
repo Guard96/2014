@@ -12,7 +12,7 @@ struct Object {
 	void* operator new(size_t size)
 	{
 		memory_count += size;
-		return malloc(size);
+		return ::operator new(size);
 	}
 };
 
