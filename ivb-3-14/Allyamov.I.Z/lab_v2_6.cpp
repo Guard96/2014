@@ -48,6 +48,9 @@ int main()
 
 	Save("base1.txt");
 
+	for (auto x = table.begin(); x < table.end(); x++)
+		delete *x;
+	table.clear();
 	system("pause");
 	return 0;
 }
