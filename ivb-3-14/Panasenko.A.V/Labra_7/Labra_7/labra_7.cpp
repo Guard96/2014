@@ -104,15 +104,15 @@ int main()
 					
 					char * t = new char[buff.size() + 1];
 					for (auto y = buff.begin(); y != buff.end(); y++, y1++)
-						temp[y1] = *y;
-					temp[y1] = 0;
+						t[y1] = *y;
+						t[y1] = 0;
 
-					if (flag_number) {
-						items.push_back(new Num(atof(t)));
-						flag_number = false;
-						use_tochka = false;
-						delete t;
-					} else
+				`		if (flag_number) {
+							items.push_back(new Num(atof(t)));
+							flag_number = false;
+							use_tochka = false;
+							delete t;
+						} else
 						pr.push_back(new Lit(t));
 
 					buff.clear();
