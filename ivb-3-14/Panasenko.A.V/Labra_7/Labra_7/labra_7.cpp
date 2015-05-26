@@ -105,7 +105,6 @@ int main()
 					char * t = new char[buff.size() + 1];
 					for (auto y = buff.begin(); y != buff.end(); y++, y1++)
 						t[y1] = *y;
-					t[y1] = 0;
 
 				`	if (flag_number) {
 						items.push_back(new Num(atof(t)));
