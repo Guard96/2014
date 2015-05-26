@@ -17,6 +17,10 @@ struct MyStruct {
 		memory_count += size;
 		return malloc(size);
 	}
+	void operator delete(void *p)
+	{
+		 free(p);
+	}
 };
 
 class base {
