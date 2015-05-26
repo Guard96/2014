@@ -107,7 +107,7 @@ int main()
 						t[y1] = *y;
 
 				`	if (flag_number) {
-						items.push_back(new Num(atof(t)));
+						t.push_back(new Num(atof(t)));
 						flag_number = false;
 						use_tochka = false;
 						delete t;
