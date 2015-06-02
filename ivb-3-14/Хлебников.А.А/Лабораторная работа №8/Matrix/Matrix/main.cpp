@@ -40,6 +40,19 @@ __test_operatorMinus()
 }
 
 void
+__test_determinant()
+{
+	/**Определитель матрицы. Вариант 10 (2)*/
++	/*Лавринович  Иван*/
+	Matrix <int> a(3, 3, 0);
+	a.put(0, 0, 5);
+	a.put(1, 1, 3);
+	a.put(2, 2, 2);
+	std::cout << "Матрица A:" << std::endl << a;
+	std::cout << "det(A)=" << a.determinant() << std::endl;
+}
+
+void
 test_is_Minor()
 {
 	/** Минор. Вариант 13*/
@@ -63,6 +76,7 @@ main(int argc, char **argv)
 	__test_isSymmetric();
 	__test_operatorPlus();
 	__test_operatorMinus();
+	__test_determinant();
 	test_is_Minor();
 	system("pause");
 	return EXIT_SUCCESS;
