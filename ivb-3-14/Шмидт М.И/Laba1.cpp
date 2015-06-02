@@ -8,7 +8,7 @@
  ИВБ-3-14
  Шмидт Максим */
 
-#define TrgetNumber 7
+#define targetNumber 7
 #define len(a) sizeof(a)/sizeof(a[0])
 #define min(a,b) a<b?a:b
 
@@ -22,7 +22,7 @@ static int Calculate(double Array[], int size)
     int result = 0;
     
     for(int i = 0; i < size; i++)
-        if(Array[i] > TrgetNumber)
+        if (Array[i] > targetNumber)
             result++;
     
     return result;
@@ -36,14 +36,14 @@ main(int argc, char **argv)
     int s2 = Calculate(mt2, len(mt2));
     int s3 = Calculate(mt3, len(mt3));
     
-    int min_value = min(min(s1,s2),s3);
+    int min_value = min(min(s1, s2), s3);
     
     printf("Минимальное значение %i содержится в:\n", min_value);
-    if(min_value==s1)
+    if (min_value==s1)
         printf(" mt1");
-    if(min_value==s2)
+    if (min_value==s2)
         printf(" mt2");
-    if(min_value==s3)
+    if (min_value==s3)
         printf(" mt3");
     
     printf("\n");
