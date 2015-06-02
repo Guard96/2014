@@ -151,9 +151,34 @@ public:
 	}
 
 	/**Определитель матрицы. Вариант 10 (2)*/
+	/*Лавринович  Иван*/
 	_Type determinant() const
 	{
-		return _Type();
+		_Type result = 0;
+		int len = getRowCount();
+		if (len == getColCount()) {
+			int x;
+			_Type line;
+			for (int invert = 0; invert < 2; invert++){
+				for (int offest = 0; offest < len; offest++) {
+					line = 1;
+					for (int i = 0; i < len; i++) {
+						x = offest + i;
+						if (invert){
+							x = -x;
+							while (x < 0)
+								x += len;
+						} else {
+							while (x >= len)
+								x -= len;
+						}
+						line *= get(x, i);
+					}
+					result += invert ? -line : line;
+				}
+			}
+		}
+		return result;
 	}
 
 	/** Вырожденная. Вариант 11*/
