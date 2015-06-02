@@ -11,15 +11,6 @@
  ИВБ-3-14
  Богомазов Степан */
  
- #define _CRT_SECURE_NO_WARNINGS
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string>
-#include <vector>
-#include <typeinfo>
-#include <windows.h>
-
 typedef std::vector<std::vector<double>> matrix;
 
 template <typename Type>
