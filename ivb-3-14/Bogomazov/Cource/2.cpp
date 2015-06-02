@@ -1,9 +1,12 @@
-/* Богомазов Степан , ИВБ-3-14 */
-
 #include <GL/freeglut.h>
 #include <time.h>
 #include <cmath>
 
+/* Курсовая
+ Вариант 6
+ ИВБ-3-14
+ Богомазов Степан */
+ 
 class game{
 public:
     int OrthoWid;
