@@ -161,11 +161,11 @@ __product_Element(matrix m)
 {
 	int n = 0;
 	for (auto i = m.begin(); i != m.end(); i++, n++){
-		double result = 0;
+		double result = 1;
 		for (auto j = i->begin(); j != i->end(); j++){
 			if (*j != 0)
 				result *= *j;
 		}
-		printf("Line %i: %i\n", n, result);
+		printf("Line %i: %f\n", n, result);
 	}
 }
