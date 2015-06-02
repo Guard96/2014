@@ -5,61 +5,43 @@
  ИВБ-3-14
  Шмидт Максим */
 
-int main(int argc, char *argv[])
-{
-    
-    int n;
-    freopen("INPUT.TXT", "r", stdin);
-    freopen("OUTPUT.TXT", "w", stdout);
-    int *a;
-    a = new int[n];
-    scanf("%d", &n);
-    for (int i = 0; i < n; i++)
-        scanf("%d", &a[i]);
-    int f = 0, s = 0, l, r, t;
-    if (n % 2 != 0) {
-        t = ((n - 1) / 2);
-        s = a[t];
-        l = t - 1;
-        r = t + 1;
-        bool flag = false;
-        while (!flag) {
-            if (a[l] > a[r]) {
-                f += a[l];
-                s += a[r];
-            } else {
-                f += a[r];
-                s += a[l];
-            }
-            l--;
-            r++;
-            if (l == 0 || r == n) {
-                flag = true;
-            }
-        }
-    } else {
-        l = (n - 1) / 2;
-        r = l + 1;
-        bool flag = false;
-        while (!flag) {
-            if (a[l] > a[r]) {
-                f += a[l];
-                s += a[r];
-            } else {
-                f += a[r];
-                s += a[l];
-            }
-            l--;
-            r++;
-            if (l == 0 || r == n) {
-                flag = true;
-            }
-        }
-    }
-    if (f > s)
-        printf("1");
-    if (f < s)
-        printf("2");
-    if (f == s)
-        printf("0");
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int igra(int data[], int left, int rigth, int player, int scope1, int scope2){
+	if (left<=rigth){
+		int il = igra(data,left+1,rigth,3-player,scope2,scope1+data[left]);
+		int ir = igra(data,left,rigth-1,3-player,scope2,scope1+data[rigth]);
+		if (il==player || ir==player)
+			return player;
+		else if (il==0 || ir==0)
+			return 0;
+		else 
+			return 3-player;
+	} else
+		if (scope1>scope2)
+			return player;
+		else if (scope1<scope2)
+			return 3-player;
+		else 
+			return 0;
+}
+
+int main(){
+	ifstream fin;
+	fin.open("INPUT.TXT");
+	int n;
+	fin>>n;
+	int data[99];
+	for(int i = 0; i<n; i++)
+		fin>>data[i];
+	fin.close();
+	
+	ofstream fout;
+	fout.open("OUTPUT.TXT");
+	fout<<igra(data,0,n-1,1,0,0);
+	fout.close();
+	return EXIT_SUCCESS;
 }
