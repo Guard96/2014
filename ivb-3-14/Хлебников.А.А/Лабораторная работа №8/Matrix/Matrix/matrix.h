@@ -127,8 +127,23 @@ public:
 	}
 
 	/** Возведение в степень. Вариант 6*/
+	/* Korotkov D.A. */
 	Matrix<_Type> & operator^(_Type number)
 	{
+		for (int n = 0; n <= number; n++)
+		{
+			for (int i = 0; i < getRowCount(); i++)
+			{
+				for (int j = 0; j < getColCount(); j++)
+				{
+					for (int k = 0; k < getColCount(); k++)
+					{
+						int value = get (i, k) * get (k, i);
+						this.put(i, j, value);
+					}
+				}
+			}
+		}
 		return *this;
 	}
 
