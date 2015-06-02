@@ -1,4 +1,4 @@
-#ifndef _MATRIX_H_
+﻿#ifndef _MATRIX_H_
 #define _MATRIX_H_
 #include <vector>
 #include <map>
@@ -108,9 +108,22 @@ public:
 	}
 
 	/** Умножение матриц. Вариант 5 */
+	/* Ilina V.D. */
 	Matrix<_Type> & operator*(const Matrix<_Type> &that)
 	{
-		return *this;
+		Matrix<_Type> result(getRowCount(), that.getColCount(), 0);
+		for (int i = 0; i < getRowCount(); i++)
+		{
+			for (int j = 0; j < that.getColCount(); j++)
+			{
+				for (int k = 0; k < getColCount(); k++)
+				{
+					int value = get(i, k) * that.get(k, j);
+					result.put(i, j, value);
+				}
+			}
+		}
+	return result;
 	}
 
 	/** Возведение в степень. Вариант 6*/
