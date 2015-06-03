@@ -39,11 +39,11 @@ main(int argc, char **argv)
     int min_value = min(min(s1,s2),s3);
     
     printf("Минимальное значение %i содержится в:\n", min_value);
-    if (min_value==s1)
+    if (min_value == s1)
         printf(" mt1");
-    if (min_value==s2)
+    if (min_value == s2)
         printf(" mt2");
-    if (min_value==s3)
+    if (min_value == s3)
         printf(" mt3");
     
     printf("\n");
