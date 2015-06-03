@@ -140,7 +140,8 @@ public:
 		return *this;
 	}
 
-	/** Транспониромание. Вариант 7 (2)*/
+	/* Транспониромание. Вариант 7 */
+	/* Богомазов Степан */
 	Matrix<_Type> & transposition()
 	{
 		return *this;
