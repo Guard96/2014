@@ -123,8 +123,7 @@ size_t IsCatFat(Cat* cat)
 size_t HowCatsAreFat(vector<Cat*>* cats)
 {
 	size_t result = 0;
-	for (auto i = cats->begin(); i < cats->end(); i++)
-	{
+	for (auto i = cats->begin(); i < cats->end(); i++) {
 		result += sizeof((*i)->Age) + sizeof((*i)->Name) + sizeof((*i)->Sex);
 	}
 	return result;
@@ -149,8 +148,7 @@ vector<Cat*>* GetTheCats()
 	vector<Cat*>* result = new vector<Cat*>();
 	int count;
 	f >> count;
-	for (auto i = 0; i < count; i++)
-	{
+	for (auto i = 0; i < count; i++) {
 		Cat* cat = new Cat();
 		f >> *cat;
 		result->push_back(cat);
@@ -163,60 +161,39 @@ Cat* FindCat(int age, string name, bool sex, vector<Cat*>* cats)
 {
 	printf("Finding lost cat.\n");
 	Cat* result = nullptr;
-	for (auto i = cats->begin(); i < cats->end(); i++)
-	{
-		if (age != NULL && name != "" && sex != NULL)
-		{
-			if ((*i)->Age == age && (*i)->Name == name && (*i)->Sex == sex)
-			{
+	for (auto i = cats->begin(); i < cats->end(); i++) {
+		if (age != NULL && name != "" && sex != NULL) {
+			if ((*i)->Age == age && (*i)->Name == name && (*i)->Sex == sex) {
 				result = *i;
 				break;
 			}
-		}
-		else if (age != NULL && name != "")
-		{
-			if ((*i)->Age == age && (*i)->Name == name)
-			{
+		} else if (age != NULL && name != "") {
+			if ((*i)->Age == age && (*i)->Name == name) {
 				result = *i;
 				break;
 			}
-		}
-		else if (age != NULL && sex != NULL)
-		{
-			if ((*i)->Age == age && (*i)->Sex == sex)
-			{
+		} else if (age != NULL && sex != NULL) {
+			if ((*i)->Age == age && (*i)->Sex == sex) {
 				result = *i;
 				break;
 			}
-		}
-		else if (name != "" && sex != NULL)
-		{
-			if ((*i)->Name == name && (*i)->Sex == sex)
-			{
+		} else if (name != "" && sex != NULL) {
+			if ((*i)->Name == name && (*i)->Sex == sex) {
 				result = *i;
 				break;
 			}
-		}
-		else if (age != NULL)
-		{
-			if ((*i)->Age == age)
-			{
+		} else if (age != NULL) {
+			if ((*i)->Age == age) {
 				result = *i;
 				break;
 			}
-		}
-		else if (name != "")
-		{
-			if ((*i)->Name == name)
-			{
+		} else if (name != "") {
+			if ((*i)->Name == name)	{
 				result = *i;
 				break;
 			}
-		}
-		else if (sex != NULL)
-		{
-			if ((*i)->Sex == sex)
-			{
+		} else if (sex != NULL)	{
+			if ((*i)->Sex == sex) {
 				result = *i;
 				break;
 			}
@@ -230,13 +207,11 @@ vector<Cat*>* MakeSomeCats(int count)
 	static string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	printf("Making some new cats.\n");
 	vector<Cat*>* cats = new vector<Cat*>();
-	for (auto i = 0; i < count; i++)
-	{
+	for (auto i = 0; i < count; i++) {
 		string name;
 		int name_length = 5 + rand() % 15;
 		name.resize(name_length);
-		for (auto j = 0; j < name_length; j++)
-		{
+		for (auto j = 0; j < name_length; j++) {
 			name[j] = charset[rand() % charset.length()];
 		}
 		int age = 1 + rand() % 20;
@@ -253,16 +228,13 @@ void PrintCats(vector<Cat*>* cats)
 	printf(" %-5s | %-20s | %-5s\n", "Age", "Name", "Sex");
 	printf("--------------------------------------\n");
 	for (auto i = cats->begin(); i < cats->end(); i++)
-	{
 		printf(" %-5d | %-20s | %-5s\n", (*i)->Age, (*i)->Name.c_str(), ((*i)->Sex) ? "male" : "female");
-	}
 	printf("--------------------------------------\n");
 }
 
 void SortCats(int field, vector<Cat*>* cats)
 {
-	switch (field)
-	{
+	switch (field) {
 	case 0:
 		sort(cats->begin(), cats->end(), sort_by_age());
 		break;

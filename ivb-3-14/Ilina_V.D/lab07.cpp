@@ -118,43 +118,32 @@ vector<Item*> parse_string(string line)
 	bool use_tochka = false;
 	std::vector<char> buff;
 	printf("%s\n", line.c_str());
-	for (int i = 0; i <= length; i++)
-	{
+	for (int i = 0; i <= length; i++) {
 		c = line[i];
-		if (flag_number && c == ',' && !use_tochka)
-		{
+		if (flag_number && c == ',' && !use_tochka) {
 			use_tochka = true;
 			buff.push_back(c);
-		}
-		else
-		{
-			if (isSymbol(c) && !(c == '_'&&buff.size()))
-			{
-				if (buff.size() != 0)
-				{
+		} else {
+			if (isSymbol(c) && !(c == '_'&&buff.size())) {
+				if (buff.size() != 0) {
 					char * temp = new char[buff.size() + 1];
 					int _y = 0;
 					for (auto j = buff.begin(); j != buff.end(); j++, _y++)
 						temp[_y] = *j;
 					temp[_y] = 0;
-					if (flag_number)
-					{
+					if (flag_number) {
 						items.push_back(new Number(atof(temp)));
 						flag_number = false;
 						use_tochka = false;
 						delete temp;
-					}
-					else
-					{
+					} else {
 						items.push_back(new Litera(temp));
 					}
 					buff.clear();
 				}
 				if (c != 0)
 					items.push_back(new Symbol(c));
-			}
-			else
-			{
+			} else {
 				if (flag_number || buff.size() == 0)
 					flag_number = isNumber(c);
 				buff.push_back(c);
