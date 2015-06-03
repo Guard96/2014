@@ -49,7 +49,7 @@ __test_transposition ()
 	a.put(2, 3, 1);
 	a.put(2, 2, 2);
 	std::cout << "Матрица: " << std::endl << a << std::endl;
-	std::cout << "Transp.:" << std::endl;
+	std::cout << "Transp.: " << std::endl;
 }
 
 void
