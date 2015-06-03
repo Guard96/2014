@@ -74,8 +74,8 @@ public:
 		}
 
 		Matrix<_Type> result(getRowCount(), getColCount(), 0);
-		for (int i = 0; i < getRowCount(); i++){
-			for (int j = 0; j < getColCount(); j++){
+		for (int i = 0; i < getRowCount(); i++) {
+			for (int j = 0; j < getColCount(); j++) {
 				result.put(i, j, get(i, j) + that.get(i, j));
 			}
 		}
@@ -93,8 +93,8 @@ public:
 		}
 
 		Matrix<_Type> result(getRowCount(), getColCount(), 0);
-		for (int i = 0; i < getRowCount(); i++){
-			for (int j = 0; j < getColCount(); j++){
+		for (int i = 0; i < getRowCount(); i++) {
+			for (int j = 0; j < getColCount(); j++) {
 				result.put(i, j, get(i, j) - that.get(i, j));
 			}
 		}
@@ -112,12 +112,9 @@ public:
 	Matrix<_Type> & operator*(const Matrix<_Type> &that)
 	{
 		Matrix<_Type> result(getRowCount(), that.getColCount(), 0);
-		for (int i = 0; i < getRowCount(); i++)
-		{
-			for (int j = 0; j < that.getColCount(); j++)
-			{
-				for (int k = 0; k < getColCount(); k++)
-				{
+		for (int i = 0; i < getRowCount(); i++) {
+			for (int j = 0; j < that.getColCount(); j++) {
+				for (int k = 0; k < getColCount(); k++)	{
 					int value = get(i, k) * that.get(k, j);
 					result.put(i, j, value);
 				}
@@ -130,14 +127,10 @@ public:
 	/* Korotkov D.A. */
 	Matrix<_Type> & operator^(_Type number)
 	{
-		for (int n = 0; n <= number; n++)
-		{
-			for (int i = 0; i < getRowCount(); i++)
-			{
-				for (int j = 0; j < getColCount(); j++)
-				{
-					for (int k = 0; k < getColCount(); k++)
-					{
+		for (int n = 0; n <= number; n++) {
+			for (int i = 0; i < getRowCount(); i++)	{
+				for (int j = 0; j < getColCount(); j++)	{
+					for (int k = 0; k < getColCount(); k++)	{
 						int value = get (i, k) * get (k, i);
 						this.put(i, j, value);
 					}
