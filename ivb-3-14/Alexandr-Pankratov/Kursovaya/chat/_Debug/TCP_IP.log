@@ -1,0 +1,14 @@
+﻿Построение начато 04.06.2015 1:47:57.
+     1>Проект "C:\Users\AS\Desktop\chat\TCP_IP.vcxproj" в узле 2 (целевые объекты Build).
+     1>ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _DEBUG /D _VC80_UPGRADE=0x0600 /l"0x0419" /nologo /fo".\Debug\TCP_IP.res" TCP_IP.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\TCP_IP.exe" /INCREMENTAL /NOLOGO odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug\TCP_IP.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\TCP_IP.lib" /MACHINE:X86 /SAFESEH .\Debug\TCP_IP.res
+         .\Debug\TCP_IP.obj
+     1>TCP_IP.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/SAFESEH"
+         TCP_IP.vcxproj -> C:\Users\AS\Desktop\chat\.\Debug\TCP_IP.exe
+     1>Построение проекта "C:\Users\AS\Desktop\chat\TCP_IP.vcxproj" завершено (целевые объекты Build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:09.29
