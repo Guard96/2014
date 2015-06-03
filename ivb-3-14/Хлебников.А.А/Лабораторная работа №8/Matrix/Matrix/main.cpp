@@ -104,6 +104,23 @@ __test_operatorMultByNumber()
 	std::cout << "Матрица A*5:" << std::endl << a * 5 << std::endl;
 }
 
+/**Сравнение матриц. Вариант 1*/
+/* Alexandr-Pankratov */
+void
+__test_equality()
+{
+	/* Safronov.I.A */
+	/** Умножение на число. Вариант 4*/
+	Matrix<int> a(3, 3, 3);
+	Matrix<int> b(3, 3, 2);
+	std::cout << "Матрица A:" << std::endl << a;
+	std::cout << "Матрица B:" << std::endl << b << std::endl;
+	std::cout << "A=B ?  " << (a == b ? "Да" : "Нет") << std::endl;
+	std::cout << "A!=B ?  " << (a != b ? "Да" : "Нет") << std::endl;
+	std::cout << "A>=B ?  " << (a >= b ? "Да" : "Нет") << std::endl;
+	std::cout << "A<=B ?  " << (a <= b ? "Да" : "Нет") << std::endl << std::endl;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -115,6 +132,7 @@ main(int argc, char **argv)
 	__test_isMinor();
 	__test_pow();
 	__test_operatorMultByNumber();
+	__test_equality();
 	system("pause");
 	return EXIT_SUCCESS;
 }
