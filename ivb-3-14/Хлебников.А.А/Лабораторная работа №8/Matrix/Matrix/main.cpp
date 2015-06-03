@@ -94,6 +94,16 @@ __test_pow ()
 	std::cout << m^(test) << std::endl;
 }
 
+void
+__test_operatorMultByNumber()
+{
+	/* Safronov.I.A */
+	/** Умножение на число. Вариант 4*/
+	Matrix<int> a(3, 3, 3);
+	std::cout << "Матрица A:" << std::endl << a;
+	std::cout << "Матрица A*5:" << std::endl << a * 5 << std::endl;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -104,6 +114,7 @@ main(int argc, char **argv)
 	__test_determinant();
 	__test_isMinor();
 	__test_pow();
+	__test_operatorMultByNumber();
 	system("pause");
 	return EXIT_SUCCESS;
 }
