@@ -140,13 +140,6 @@ public:
 		return *this;
 	}
 
-	/* Транспониромание. Вариант 7 */
-	/* Богомазов Степан */
-	Matrix<_Type> & transposition()
-	{
-		return *this;
-	}
-	
 	/**Обратная матрица. Вариант 8 (2)*/
 	Matrix<_Type> & invert()
 	{
@@ -243,6 +236,24 @@ public:
 			return 0;
 		return _value[0].size();
 	}
+
+	/* Транспониромание. Вариант 7 */
+	/* Богомазов Степан */
+	Matrix<_Type> & transposition()
+	{
+		for (int n = 0; n <= number; n++) {
+			for (int i = 0; i < getRowCount(); i++)	{
+				for (int j = 0; j < getColCount(); j++)	{
+					for (int k = 0; k < getColCount(); k++)	{
+						transpArray[j][i] = array[i][j];
+						result.put(i, j, value);
+					}
+				}
+			}
+		}
+		return *this;
+	}
+	
 
 	/**Минор. Вариант 13 (2) Панасенко А.В. */
 	_Type minor(int row, int col) const
