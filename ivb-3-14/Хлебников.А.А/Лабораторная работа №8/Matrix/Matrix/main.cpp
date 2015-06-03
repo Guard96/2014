@@ -53,7 +53,7 @@ __test_determinant()
 }
 
 void
-__test_isMinor()
+test_is_Minor()
 {
 	/** Минор. Вариант 13*/
 	/**	Панасенко Андрей **/
@@ -69,6 +69,17 @@ __test_isMinor()
 	std::cout << "Минор (" << row << "," << col << ") = " << m.minor(row, col) << std::endl << std::endl;
 }
 
+void
+test_pow ()
+{
+	/** Возведение в степень. 6 вариант*/
+	/** Коротков Даниил **/
+	Matrix <int> m(1, 2, 3);
+	int test = 2;
+	std::cout << "Матрица: " << std::endl << m;
+	std::cout m^(test) << std::endl;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -77,7 +88,8 @@ main(int argc, char **argv)
 	__test_operatorPlus();
 	__test_operatorMinus();
 	__test_determinant();
-	__test_isMinor();
+	test_is_Minor();
+	test_pow();
 	system("pause");
 	return EXIT_SUCCESS;
 }
