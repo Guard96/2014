@@ -53,7 +53,7 @@ __test_determinant()
 }
 
 void
-test_is_Minor()
+__test_isMinor()
 {
 	/** Минор. Вариант 13*/
 	/**	Панасенко Андрей **/
@@ -77,7 +77,7 @@ main(int argc, char **argv)
 	__test_operatorPlus();
 	__test_operatorMinus();
 	__test_determinant();
-	test_is_Minor();
+	__test_isMinor();
 	system("pause");
 	return EXIT_SUCCESS;
 }
