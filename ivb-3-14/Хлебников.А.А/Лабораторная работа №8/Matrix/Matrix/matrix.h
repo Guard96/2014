@@ -42,24 +42,31 @@ public:
 	}
 
 	/**Сравнение матриц. Вариант 1*/
+	/* Alexandr-Pankratov */
 	bool operator==(const Matrix<_Type> &other)
 	{
-		return false;
+		for (int i = 0; i < getRowCount(); i++) {
+			for (int j = 0; j < getColCount(); j++) {
+				if (get(i, j) != other.get(i, j))
+					return false;
+			}
+		}
+		return true;
 	}
 
 	bool operator>=(const Matrix<_Type> &other)
 	{
-		return false;
+		return determinant() >= other.determinant();
 	}
 
 	bool operator<=(const Matrix<_Type> &other)
 	{
-		return false;
+		return determinant() <= other.determinant();
 	}
 
 	bool operator!=(const Matrix<_Type> &other)
 	{
-		return false;
+		return !operator==(other);
 	}
 
 
