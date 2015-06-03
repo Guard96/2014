@@ -141,36 +141,11 @@ public:
 	}
 
 	/** Транспониромание. Вариант 7 (2)*/
-	/* Basin G.J. */
 	Matrix<_Type> & transposition()
 	{
-		int trans (int(&matrix)[5][5])
-  			{
-    					int t;
-    					for (int i=0; i<5; i++)
-        			{
-          				for (int j=i; j<5; j++)
-             				{
-               					t=matrix[i][j];
-               					matrix[i][j]=matrix[j][i];
-               					matrix[j][i]=t;
-              				}
-        			}
-     				return (&matrix)[5][5];
-  			}
-		void main ()
-		{
-			int M[5][5];
-			int i ,j;
-			for (i=0; i<5; i++)
-   			{
-      				for (j=0;  j<5;  j++)
-      				M[i][j]=(i+23)-(j+2)
-   			}
-		M[5][5]=trans(M);
-		}
+		return *this;
 	}
-
+	
 	/**Обратная матрица. Вариант 8 (2)*/
 	Matrix<_Type> & invert()
 	{
