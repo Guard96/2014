@@ -22,15 +22,14 @@ FILE *fd;	//Пусть будет глобальным. Каждый раз пе
 //static const char * const OutputFileName = "output_3.txt";
 int recurse (int curpos, short prevmode);
 
-int
-main(int argc, char **)
+int main (int argc, char **)
 {
 	setlocale(LC_ALL, "Russian");
 #ifdef DEBUG
 fprintf(stdout,"%li\n",InputFileSize);
 #endif
 	fd = fopen ( InputFileName , "r" );
-	if( fd != NULL) {
+	if(fd != NULL) {
 
 		int allresult = -1;
 
@@ -68,8 +67,7 @@ int recurse (int curpos, short prevmode)
 {	
 	int result=0;	//сколько вариантов у нас будет с этого уровня рекурсии. Памяти бы хватило. По крайней мере, один путь уже есть.
 	fseek(fd, curpos*sizeof(char), SEEK_SET ); // А вдруг мы провалились сюда после конца рекурсии где-то далеко внизу? 
-	if (curpos >= InputFileSize)
-	{
+	if (curpos >= InputFileSize) {
 		return result + 1;		//мы достигли дна. Всплываем!
 	} else {
 		int curnum=-1;	//текущее число. 
@@ -82,27 +80,23 @@ int recurse (int curpos, short prevmode)
 				curnum = atoi (&c); 
 			}
 
-		if (prevmode - curnum > 0)
-		{ //Может составить символ с предыдущим. См. описание в комментарии до тела функции
-			result += recurse (curpos + 1, 0); 	//Идём глубже. И да, мы сейчас не сможем использовать текущую цифру глубже.
-												//Покажете мне закодированный тремя знаками символ -- с меня чай.
-												// m_0{2,}_ не считается, в условии не сказано обработать всё.
-		} 
-		int curmode = 0; // Думаю, стоит объявить это как можно позже.
-		if (curnum == 3)
-		{
-			curmode = 4;	//См. комментарий перед функцией, да. 
-		} else if (curnum < 3 && curnum > 0)
-		{
-			curmode = 10;	//Там описано поведение переменной mode
+		if ((prevmode - curnum) > 0) { //Может составить символ с предыдущим. См. описание в комментарии до тела функции
+			result += recurse (curpos + 1, 0); 	//Идём глубже. И да, мы сейчас не сможем использовать текущую цифру глубже. <-- wut
+									//Покажете мне закодированный тремя знаками символ -- с меня чай.
+									// m_0{2,}_ не считается, в условии не сказано обработать всё.
 		}
-
+		int curmode = 0; // Думаю, стоит объявить это как можно позже.
+		if (curnum == 3) {
+			curmode = 4;	//См. комментарий перед функцией, да. 
+		} else {
+			if ((curnum < 3 ) && ( curnum > 0 )) {
+				curmode = 10;	//Там описано поведение переменной mode
+			}
+		}
 		// Даже если это число может составить символ с предыдущим, стоит задуматься: а не стоит ли нам взять
 		// текущую цифру как отдельный символ?
 								
 		result += recurse (curpos + 1, curmode);
-
-		
 	}
 	return result;
 }
