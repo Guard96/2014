@@ -102,9 +102,17 @@ public:
 	}
 
 	/** Умножение на число. Вариант 4*/
-	Matrix<_Type> & operator*(_Type number)
+	/* Safronov.I.A */
+	Matrix<_Type> operator*(_Type number)
 	{
-		return *this;
+		Matrix <_Type> result(getRowCount(), getColCount(), 0);
+
+		for (int i = 0; i < getRowCount(); i++) {
+			for (int j = 0; j < getColCount(); j++) {
+				result.put(i, j, get(i, j) * number);
+			}
+		}
+		return result;
 	}
 
 	/** Умножение матриц. Вариант 5 */
