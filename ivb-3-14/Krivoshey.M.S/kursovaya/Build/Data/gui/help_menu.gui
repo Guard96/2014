@@ -1,0 +1,19 @@
+control
+name = help_menu
+scale = 1 1 1
+backColor = 0.23530 0.72656 0.78125 1
+attach
+{
+	control
+	position = 0 -400 -400
+	scale = 0 800 800
+	texture = Data\textures\help.dds
+	align 1 1
+}
+attach
+{
+	file Data\gui\button.gui
+	position = 0 0 50
+	align 1 2
+	name = exit
+}

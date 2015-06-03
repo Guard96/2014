@@ -1,0 +1,16 @@
+control
+scale = 0 150 150
+attach
+{
+	control
+	scale = 0 30 30
+	position = 0 35 58
+	texture = Data\textures\mainmenu\eye.dds
+}
+attach
+{
+	control
+	scale = 0 30 30
+	position = 0 89 58
+	texture = Data\textures\mainmenu\eye.dds
+}

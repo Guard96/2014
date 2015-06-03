@@ -1,0 +1,158 @@
+control
+name = level_editor
+scale = 1 1 1
+rendable = 0
+attach
+{
+	control
+	name = static_background
+	scale = 1 1 1
+	position = 0 0 0
+	texture = Data\textures\backgroung.dds
+	attach
+	{
+		control
+		scale = 0 300 100
+		uv = 0 0.33 1 0.66
+		texture = Data\textures\top.dds
+	}
+	attach
+	{
+		control
+		align 2 0
+		uv = 0 0 1 0.33
+		scale = 0 300 100
+		position = 0 300 0
+		texture = Data\textures\top.dds
+	}
+}
+attach
+{
+	control
+	name = edit_plane
+	scale = 0 420 420
+	position = 0 -210 -210
+	align 1 1
+}
+attach
+{
+	control
+	scale = 0 102 352
+	position = 0 52 -177
+	backColor = 0.9 0.9 0.9 1
+	align 2 1
+	attach
+	{
+		control
+		name = select_plane
+		scale = 0 100 350
+		position = 0 1 1
+		backColor = 0.5 0.5 0.5 1
+		attach
+		{
+			file Data\gui\checkbox_br.gui
+			scale = 0 50 50
+			name = br_border
+			attach
+			{
+				control
+				texture = Data\textures\object\block.dds
+				scale = 0 50 50
+				uv = 0 0 0.25 0.25
+			}
+		}
+		attach
+		{
+			file Data\gui\checkbox_br.gui
+			scale = 0 50 50
+			position = 0 0 50
+			name = br_point
+			attach
+			{
+				control
+				scale = 0 50 50
+				texture = Data\textures\object\point.dds
+			}
+		}
+		attach
+		{
+			file Data\gui\checkbox_br.gui
+			scale = 0 50 50
+			position = 0 0 100
+			name = br_mob
+			attach
+			{
+				control
+				scale = 0 50 50
+				texture = Data\textures\object\mob0.dds
+			}
+		}
+		attach
+		{
+			file Data\gui\checkbox_br.gui
+			scale = 0 50 50
+			position = 0 0 150
+			name = br_player
+			attach
+			{
+				control
+				scale = 0 50 50
+				texture = Data\textures\object\pacman.dds
+				uv = 0.33 0.66 0.66 1
+			}
+		}
+		attach
+		{
+			file Data\gui\checkbox_br.gui
+			scale = 0 50 50
+			position = 0 0 200
+			name = br_bonus
+			attach
+			{
+				control
+				scale = 0 50 50
+				texture = Data\textures\object\bonus.dds
+			}
+		}
+		attach
+		{
+			file Data\gui\checkbox_br.gui
+			scale = 0 50 50
+			position = 0 0 250
+			name = br_portal
+			attach
+			{
+				control
+				scale = 0 50 50
+				texture = Data\textures\object\portal.dds
+			}
+		}
+		attach
+		{
+			file Data\gui\checkbox_br.gui
+			scale = 0 50 50
+			position = 0 0 300
+			name = br_blank
+			attach
+			{
+				control
+				scale = 0 50 50
+				texture = Data\textures\object\blank.dds
+			}
+		}
+	}
+}
+attach
+{
+	file Data\gui\checkbox.gui
+	position = 0 10 50
+	align 0 2
+	name = show_ai
+}
+attach
+{
+	file Data\gui\button.gui
+	position = 0 0 50
+	align 1 2
+	name = exit
+}

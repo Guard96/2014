@@ -1,0 +1,18 @@
+control
+name = pause_menu
+scale = 1 1 1
+rendable = 0
+attach
+{
+	file Data\gui\button.gui
+	position = 0 0 -51
+	align 1 1
+	name = exit
+}
+attach
+{
+	file Data\gui\button.gui
+	position = 0 0 1
+	align 1 1
+	name = contine
+}

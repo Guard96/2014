@@ -1,0 +1,62 @@
+control
+scale = 1 1 1
+name = geme_end_menu
+rendable = 0
+attach
+{
+	control
+	name = static_background
+	scale = 1 1 1
+	position = 0 0 0
+	texture = Data\textures\backgroung.dds
+	attach
+	{
+		control
+		scale = 0 300 100
+		uv = 0 0.33 1 0.66
+		texture = Data\textures\top.dds
+	}
+	attach
+	{
+		control
+		align 2 0
+		uv = 0 0 1 0.33
+		scale = 0 300 100
+		position = 0 300 0
+		texture = Data\textures\top.dds
+	}
+}
+attach
+{
+	laber
+	fontSize = 1
+	position = 0 0 -150
+	align 0 1
+	center = 1
+	text = Âû âûèãðàëè!
+	name = victory
+}
+attach
+{
+	laber
+	fontSize = 1
+	position = 0 0 -150
+	align 0 1
+	center = 1
+	text = ÏÎÒÐÀ×ÅÍÎ
+	name = dead
+}
+attach
+{
+	file Data\gui\button.gui
+	position = 0 0 -51
+	align 1 1
+	name = replay
+}
+attach
+{
+	file Data\gui\button.gui
+	position = 0 0 1
+	align 1 1
+	name = exit
+}

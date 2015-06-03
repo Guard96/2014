@@ -1,0 +1,71 @@
+checkbox
+scale = 0 32 32
+rendable = 0
+attach
+{
+	laber
+	fontSize = 0.5
+	position = 0 38 0
+	name = text
+}
+attach state_on
+{
+	button
+	scale = 0 32 32
+	rendable = 0
+	attach state_normal
+	{
+		control
+		scale = 0 32 32
+		texture = Data\textures\control\checkbox.dds
+		uv = 0 0 0.5 0.5
+	}
+	attach state_mouse
+	{
+		control
+		scale = 0 32 32
+		texture = Data\textures\control\checkbox.dds
+		uv = 0.5 0 1 0.5
+		visible = 0
+	}
+	attach state_down
+	{
+		control
+		position 0 1 1
+		scale = 0 32 32
+		texture = Data\textures\control\checkbox.dds
+		uv = 0.5 0 1 0.5
+		visible = 0
+	}
+}
+attach state_off
+{
+	button
+	scale = 0 32 32
+	rendable = 0
+	visible = 0
+	attach state_normal
+	{
+		control
+		scale = 0 32 32
+		texture = Data\textures\control\checkbox.dds
+		uv = 0 0.5 0.5 1
+	}
+	attach state_mouse
+	{
+		control
+		scale = 0 32 32
+		texture = Data\textures\control\checkbox.dds
+		uv = 0.5 0.5 1 1
+		visible = 0
+	}
+	attach state_down
+	{
+		control
+		position 0 1 1
+		scale = 0 32 32
+		texture = Data\textures\control\checkbox.dds
+		uv = 0.5 0.5 1 1
+		visible = 0
+	}
+}

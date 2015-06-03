@@ -1,0 +1,58 @@
+checkbox
+scale = 0 50 50
+rendable = 0
+attach state_on
+{
+	button
+	scale = 0 50 50
+	rendable = 0
+	name = btn
+	attach state_normal
+	{
+		control
+		scale = 0 50 50
+		backColor = 0.5 0.5 0.5 1
+	}
+	attach state_mouse
+	{
+		control
+		scale = 0 50 50
+		backColor = 0.6 0.6 0.6 1
+		visible = 0
+	}
+	attach state_down
+	{
+		control
+		scale = 0 50 50
+		backColor = 0.7 0.7 0.7 1
+		visible = 0
+	}
+}
+attach state_off
+{
+	button
+	scale = 0 50 50
+	rendable = 0
+	name = btn
+	visible = 0
+	attach state_normal
+	{
+		control
+		scale = 0 50 50
+		backColor = 0.67 0.67 0.67 1
+	}
+	attach state_mouse
+	{
+		control
+		scale = 0 50 50
+		backColor = 0.6 0.6 0.6 1
+		visible = 0
+	}
+	attach state_down
+	{
+		control
+		scale = 0 50 50
+		backColor = 0.53 0.53 0.53 1
+		visible = 0
+	}
+}

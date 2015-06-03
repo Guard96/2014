@@ -1,0 +1,60 @@
+control
+name = setting_menu
+scale = 1 1 1
+rendable = 0
+attach
+{
+	control
+	name = static_background
+	scale = 1 1 1
+	position = 0 0 0
+	texture = Data\textures\backgroung.dds
+	attach
+	{
+		control
+		scale = 0 300 100
+		uv = 0 0.33 1 0.66
+		texture = Data\textures\top.dds
+	}
+	attach
+	{
+		control
+		align 2 0
+		uv = 0 0 1 0.33
+		scale = 0 300 100
+		position = 0 300 0
+		texture = Data\textures\top.dds
+	}
+}
+attach
+{
+	control
+	scale = 0 350 300
+	position = 0 -175 -150
+	align 1 1
+	attach
+	{
+		file Data\gui\checkbox.gui
+		position = 0 10 40
+		name = sse
+	}
+	attach
+	{
+		file Data\gui\checkbox.gui
+		position = 0 10 80
+		name = anim
+	}
+	attach
+	{
+		file Data\gui\checkbox.gui
+		position = 0 10 120
+		name = fps
+	}
+}
+attach
+{
+	file Data\gui\button.gui
+	position = 0 0 50
+	align 1 2
+	name = exit
+}
