@@ -145,7 +145,7 @@ public:
 	{
 		return *this;
 	}
-
+	
 	/**Обратная матрица. Вариант 8 (2)*/
 	Matrix<_Type> & invert()
 	{
