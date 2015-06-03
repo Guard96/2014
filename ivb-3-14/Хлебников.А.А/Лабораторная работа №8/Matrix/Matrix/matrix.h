@@ -160,6 +160,7 @@ public:
 
 	/**Определитель матрицы. Вариант 10 (2)*/
 	/*Лавринович  Иван*/
+	/*Zalyaliev R.R.*/
 	_Type determinant() const
 	{
 		_Type result = 0;
