@@ -40,6 +40,19 @@ __test_operatorMinus()
 }
 
 void
+__test_transposition ()
+{
+	/** Транспониромание. Вариант 7 **/
+	/** Богомазов Степан **/
+	Matrix <int> a(8, 4, 1);
+	a.put(5, 1, 2);
+	a.put(2, 3, 1);
+	a.put(2, 2, 2);
+	std::cout << "Матрица: " << std::endl << a << std::endl;
+	std::cout << "Transp.:" << std::endl;
+}
+
+void
 __test_determinant()
 {
 	/**Определитель матрицы. Вариант 10 (2)*/
