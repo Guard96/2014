@@ -71,6 +71,7 @@ __test_isMinor()
 {
 	/** Минор. Вариант 13*/
 	/**	Панасенко Андрей **/
+	/* Basin G.J. */
 	Matrix <int> m(4, 4, 0);
 	for (int i = 0, i2 = 0; i < m.getRowCount(); i++, i2++) {
 		for (int j = 0, j2 = 0; j < m.getColCount(); j++, j2++) {
