@@ -5,13 +5,13 @@
 
 using std::string;
 
-class pt
+class point
 {
 public:
 	virtual void print(){}
 };
 
-class Number : public pt
+class number : public point
 {
 	double value;
 
@@ -26,7 +26,7 @@ public:
 	}
 };
 
-class Litera : public pt
+class Litera : public point
 {
 	char * value;
 
@@ -45,7 +45,7 @@ public:
 	}
 };
 
-class Letter : public pt
+class Letter : public point
 {
 	char value;
 
@@ -80,7 +80,7 @@ int main()
 {
 	setlocale(0, "Russian");
 
-	std::vector<Pt *> pt;
+	std::vector<Point *> point;
 
 	char * input = _strdup("working+483_k / _ 1,1 g_ab = 33,8,12");
 	int len = strlen(input);
