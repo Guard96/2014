@@ -21,6 +21,10 @@ struct Structure
 		memory += size;
 		return malloc(size);
 	}
+	void operator delete(void *p)
+	{
+		free(p);
+	}
 };
 
 std::vector<Structure*> source;
