@@ -271,6 +271,7 @@ public:
 	
 
 	/**Минор. Вариант 13 (2) Панасенко А.В. */
+	/* Basin G.J. */
 	_Type minor(int row, int col) const
 	{
 		Matrix <_Type> my(_value.size() - 1, _value.size() - 1, 0);
