@@ -96,8 +96,7 @@ int main()
 		if (flag_number && b == ',' && !use_tochka) {
 			use_tochka = true;
 			buff.push_back(b);
-		}
-		else {
+		} else {
 			if (isLetter(b) && !(b == '_'&&buff.size())) {
 				if (buff.size() != 0) {
 					char * temp = new char[buff.size() + 1];
@@ -111,16 +110,14 @@ int main()
 						flag_number = false;
 						use_tochka = false;
 						delete temp;
-					}
-					else
+					} else
 						pt.push_back(new Litera(temp));
 
 					buff.clear();
 				}
 				if (b != 0)
 					pt.push_back(new Letter(b));
-			}
-			else {
+			} else {
 				if (flag_number || buff.size() == 0)
 					flag_number = isNumber(b);
 
