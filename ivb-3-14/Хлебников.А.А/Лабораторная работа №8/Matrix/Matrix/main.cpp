@@ -39,7 +39,7 @@ __test_operatorMinus()
 	std::cout << "Матрица A-B:" << std::endl << a - b << std::endl;
 }
 void
-__tesr_invert ()
+__test_invert ()
 {
 	/** обратная матрица. Вариант 8 **/
 	/** Folomkin A.A. **/
