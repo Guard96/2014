@@ -38,7 +38,18 @@ __test_operatorMinus()
 	std::cout << "Матрица B:" << std::endl << b;
 	std::cout << "Матрица A-B:" << std::endl << a - b << std::endl;
 }
-
+void
+__tesr_invert ()
+{
+	/** обратная матрица. Вариант 8 **/
+	/** Folomkin A.A. **/
+	Matrix <int> m(3, 3, 0);
+	m.put(0, 0, 5);
+	m.put(1, 1, 3);
+	m.put(2, 2, 2);
+	std::cout << m.invert() << std::endl;
+	
+}
 void
 __test_transposition ()
 {
