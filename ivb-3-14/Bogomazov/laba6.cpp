@@ -76,7 +76,7 @@ main()
 	       ShortArray();
 
 	       PrintArray();
-	       printf("Поиск тавара, введите индекс:");
+	       printf("Поиск тавара:");
 	       int k = 0;
 	       cin >> k;
 
@@ -84,7 +84,7 @@ main()
 	       if (find != nullptr)
 		               cout << *find;
 	       else
-		               cout << "Ничего не найдено\n";
+		               cout << "Yе найдено\n";
 
 	       SaveArray();
 
@@ -111,7 +111,7 @@ LoadArray()
 	        fs.close();
 
 	        int s = sizeof(Item);
-	        printf("База загруженна, выделенно %i байт (по %i байт на элемент)\n", s * BaseLen, s);
+	        printf("Dыделенно %i байт\n", s * BaseLen, s);
 }
 
 void
@@ -122,7 +122,7 @@ SaveArray()
 	      fs << BaseLen << '\n';
 
 	      for (int i = 0; i < BaseLen; i++)
-		             fs << Base[i];
+		       fs << Base[i];
 
 	      fs.close();
 }
@@ -131,13 +131,13 @@ void
 ShortArray()
 {
 	       for (int j = 1; j <= (BaseLen - 1); j++) {
-		               for (int i = 0; i < BaseLen - j; i++) {
-			                              if (Base[i] < Base[i + 1]) {
-				                                     Item s = Base[i + 1];
-				                                     Base[i + 1] = Base[i];
-				                                     Base[i] = s;
-			                              }
-		               }
+		        for (int i = 0; i < BaseLen - j; i++) {
+			        if (Base[i] < Base[i + 1]) {
+				        Item s = Base[i + 1];
+				        Base[i + 1] = Base[i];
+				        Base[i] = s;
+			        }
+		        }
 	       }
 }
 
