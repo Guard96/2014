@@ -19,13 +19,13 @@ SendMessageToClient(int ID)
 			printf("Client disconect...\n");
 			delete buffer;
 			return;
-		}
-		if(len) {
+		} else (len) {
 			printf(buffer);
 			printf("\n");
 			for (int i = 0; i < ClientCount; i++) {
-				if(i!=ID)
+				if(i!=ID) {
 					send(Connections[i], buffer, SIZE, NULL);
+				}
 			}
 		}
 	}
