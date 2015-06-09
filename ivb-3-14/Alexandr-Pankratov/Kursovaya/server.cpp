@@ -31,7 +31,8 @@ SendMessageToClient(int ID)
 	}
 }
 
-int main()
+int 
+main()
 {
 	setlocale(0, "russian");
 	WSAData data;
