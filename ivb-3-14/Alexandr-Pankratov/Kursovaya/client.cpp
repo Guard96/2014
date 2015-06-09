@@ -40,8 +40,6 @@ main()
 		return 1;
 	}
 
-	char data[SIZE];
-	
 	CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)Recive, (LPVOID)(s), NULL, NULL);
 	while(1) {
 		string t;
