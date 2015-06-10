@@ -17,16 +17,14 @@ main()
 	char * result = new char[len];
 
 	int n = 0;
-	for (int i = 0; input[i]; i++, n++)
-	{
+	for (int i = 0; input[i]; i++, n++) {
 		if (input[i] == ' ') {
 			 i++;
 			 result[n++] = ' ';
 
 		while (input[i] == ' ')
 	                    i++; }
-		result[n] = input[i];
-	}
+		result[n] = input[i]; }
 	result[n] = 0;
 
 	std::cout << result << std::endl;
