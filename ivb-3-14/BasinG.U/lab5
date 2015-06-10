@@ -211,12 +211,11 @@ int main(int argc, char** argv)
 		fprintf(stdout, "Output matrix N1:\n");
 		__outputMaxElements(m1);
 	}
-	
 	else 	
-		{
-			fprintf(stdout, "Output matrix N2:\n");
-			__outputMaxElements(m2);
-		}
+	{
+		fprintf(stdout, "Output matrix N2:\n");
+		__outputMaxElements(m2);
+	}
 	system("pause");
 	return EXIT_SUCCESS;
 }
