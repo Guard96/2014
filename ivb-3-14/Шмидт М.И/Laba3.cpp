@@ -20,12 +20,11 @@ main()
 	for (int i = 0; input[i]; i++, n++)
 	{
 		if (input[i] == ' ') {
-			i++;
-			result[n++] = ' ';
+			 i++;
+			 result[n++] = ' ';
 
-			while (input[i] == ' ')
-				i++;
-		}
+		while (input[i] == ' ')
+	                    i++; }
 		result[n] = input[i];
 	}
 	result[n] = 0;
