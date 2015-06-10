@@ -23,8 +23,8 @@ main()
 			 result[n++] = ' ';
 
 		while (input[i] == ' ')
-	                    i++; }
-		result[n] = input[i]; }
+	                        i++; }
+		      result[n] = input[i]; }
 	result[n] = 0;
 
 	std::cout << result << std::endl;
