@@ -140,35 +140,6 @@ private:
 	std::string _buffer;
 };
 
-/*double** __loadMatrix(
-const char* const szFileName,
-int* piRows,
-int* piCols)
-{
-NumberFromFileParser<double> parser;
-auto retval = parser.parse(szFileName, matrix);
-if (retval) {
-(*piRows) = matrix.size();
-double** result = new double*[matrix.size()];
-for (
-NumberFromFileParser::__MatrixLine::size_type k = 0;
-k < matrix.size();
-k++) {
-NumberFromFileParser::__MatrixLine line = matrix.at(k);
-result[k] = new double[line.size()];
-(*piCols) = line.size();
-for (
-NumberFromFileParser::__Matrix::size_type i = 0;
-i < line.size();
-i++) {
-result[k][i] = line.at(i);
-}
-}
-return result;
-}
-return nullptr;
-}*/
-
 void
 __destroyMatrix(double **pMatrix, int rows, int cols)
 {
@@ -240,10 +211,12 @@ int main(int argc, char** argv)
 		fprintf(stdout, "Output matrix N1:\n");
 		__outputMaxElements(m1);
 	}
-	else {
-		fprintf(stdout, "Output matrix N2:\n");
-		__outputMaxElements(m2);
-	}
+	
+	else 	
+		{
+			fprintf(stdout, "Output matrix N2:\n");
+			__outputMaxElements(m2);
+		}
 	system("pause");
 	return EXIT_SUCCESS;
 }
