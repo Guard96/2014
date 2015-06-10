@@ -9,11 +9,9 @@
 
 static double ** __loadMatrix( const char * const szFileName,  int * piRows, int * piCols);
 
-static int __exception(const char * const szMessage)
-{
+static int __exception(const char * const szMessage) {
     fprintf(stderr, "%s\n", szMessage);
-    return EXIT_FAILURE;
-}
+    return EXIT_FAILURE; }
 
 static void PrintMatrix(double **pMatrix, int rows, int cols);
 static void DestroyMatrix(double **pMatrix, int rows, int cols);
@@ -21,6 +19,7 @@ static int Calculate(double **pMatrix, int rows, int cols);
 static double CalculateRow(double **pMatrix, int row, int cols);
 
 int main(int argc, char **argv)
+
 {
     if (argc > 3)
         return __exception("Not found input file");
@@ -44,18 +43,14 @@ int main(int argc, char **argv)
     int row, cols;
     double ** matrix;
     
-    if(S1 < S2)
-    {
+    if(S1 < S2) {
         matrix = matrix1;
         row = mRows1;
         cols = mCols1;
-    }
-    else
-    {
+    } else {
         matrix = matrix2;
         row = mRows2;
-        cols = mCols2;
-    }
+        cols = mCols2; }
     
     for (int i = 0; i < row; i++)
         printf("Min element %i line = %3.1f\n", i+1, CalculateRow(matrix, i, cols));
@@ -73,10 +68,8 @@ void PrintMatrix(double **pMatrix, int rows, int cols)
         for (auto j = 0; j < cols; ++j) {
             if (j > 0)
                 fprintf(stdout, " ");
-            fprintf(stdout, "%3.1f\t", pMatrix[i][j]);
-        }
-        fprintf(stdout, "\n");
-    }
+            fprintf(stdout, "%3.1f\t", pMatrix[i][j]); }
+        fprintf(stdout, "\n"); }
     fprintf(stdout, "\n");
 }
 
@@ -98,10 +91,10 @@ int Calculate(double **pMatrix, int rows, int cols)
     
     for (int i = 0; i < rows; ++i)
         for (int j = 0; j < cols; ++j)
-            if(pMatrix[i][j] >= 0)
+            if (pMatrix[i][j] >= 0)
                 result++;
     
-    if(n==0) return 0;
+    if (n == 0) return 0;
     return result/n;
 }
 
@@ -110,10 +103,8 @@ void DestroyMatrix(double **pMatrix, int rows, int cols)
     if (pMatrix != nullptr) {
         for (int i = 0; i < rows; i++) {
             if (pMatrix[i] != nullptr)
-                delete[] pMatrix[i];
-        }
-        delete[] pMatrix;
-    }
+                delete[] pMatrix[i]; }
+        delete[] pMatrix; }
 }
 
 #include <string>
@@ -140,60 +131,38 @@ public:
     
     bool eof() const
     {
-        return feof(_fd) > 0;
-    }
-    bool next()
-    {
+        return feof(_fd) > 0; }
+    bool next() {
         _ch = fgetc(_fd);
-        return _ch != EOF;
-    }
-    bool isWhitespace() const
-    {
-        return isspace((int)_ch) > 0;
-    }
-    bool isDigit() const
-    {
-        return isdigit((int)_ch) > 0;
-    }
-    bool isDot() const
-    {
+        return _ch != EOF; }
+    bool isWhitespace() const {
+        return isspace((int)_ch) > 0; }
+    bool isDigit() const {
+        return isdigit((int)_ch) > 0; }
+    bool isDot() const {
         return _ch == '.' ||
-        _ch == ',';
-    }
-    bool isSign() const
-    {
+        _ch == ','; }
+    bool isSign() const {
         return _ch == '-' ||
-        _ch == '+';
-    }
-    bool isEndOfLine() const
-    {
+        _ch == '+'; }
+    bool isEndOfLine() const {
         return _ch == '\r' ||
-        _ch == '\n';
-    }
-    void skipWhitespace()
-    {
-        while (!eof() && isWhitespace() && next());
-    }
-    void skipEndOfLine()
-    {
-        while (!eof() && isEndOfLine() && next());
-    }
-    void parseNumber()
-    {
+        _ch == '\n'; }
+    void skipWhitespace() {
+        while (!eof() && isWhitespace() && next()); }
+    void skipEndOfLine() {
+        while (!eof() && isEndOfLine() && next()); }
+    void parseNumber() {
         skipWhitespace();
         while (!eof() && !isWhitespace() &&
                (isSign() || isDot() || isDigit())) {
             put();
-            next();
-        }
+            next(); }
     }
-    void put()
-    {
-        _buffer.push_back(_ch);
-    }
+    void put() {
+        _buffer.push_back(_ch); }
     
-    bool parse(const char * const  name, __Matrix &matrix)
-    {
+    bool parse(const char * const  name, __Matrix &matrix) {
         std::vector<double> row;
         matrix.clear();
         if (_fd == nullptr)
@@ -205,20 +174,17 @@ public:
             _buffer.clear();
             parseNumber();
             if (_buffer.size() > 0) {
-                row.push_back(atof(_buffer.c_str()));
-            }
+                row.push_back(atof(_buffer.c_str())); }
             if (isEndOfLine()) {
                 skipEndOfLine();
                 matrix.push_back(row);
-                row.clear();
-            }
+                row.clear(); }
         }
         if (row.size() > 0)
             matrix.push_back(row);
         fclose(_fd);
         _fd = nullptr;
-        return true;
-    }
+        return true; }
 private:
     char                _ch;
     FILE               *_fd;
@@ -248,10 +214,8 @@ __loadMatrix(
                  NumberFromFileParser::__Matrix::size_type i = 0; 
                  i < line.size(); 
                  ++i) {
-                result[k][i] = line.at(i);
-            }
+                result[k][i] = line.at(i); }
         }
-        return result;
-    }
+        return result; }
     return nullptr;
 }
