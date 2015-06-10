@@ -18,39 +18,39 @@ using std::cin;
 class Item
 {
 public:
-	       int i, c, m;
+        int i, c, m;
 
-	       bool operator < (const Item a)
-	       {
-		              return c < a.c;
-	       }
+	bool operator < (const Item a)
+	{
+		return c < a.c;
+	}
 
-	       bool operator >(const Item a)
-	       {
-		              return c > a.c;
-	       }
+	bool operator >(const Item a)
+	{
+		return c > a.c;
+	}
 
 private:
-	       friend istream & operator >> (istream &fs, Item &item);
-	       friend ostream & operator << (ostream &fs, const Item &item);
+	friend istream & operator >> (istream &fs, Item &item);
+	friend ostream & operator << (ostream &fs, const Item &item);
 };
 
 istream &
 operator >> (istream &fs, Item &item)
 {
-	        fs >> item.i;
-	        fs >> item.c;
-	        fs >> item.m;
-	        return fs;
+	fs >> item.i;
+	fs >> item.c;
+	fs >> item.m;
+	return fs;
 }
 
 ostream &
 operator << (ostream &fs, const Item &item)
 {
-        	fs << item.i << '\t';
-	        fs << item.c << '\t';
-	        fs << item.m << std::endl;
-	        return fs;
+        fs << item.i << '\t';
+	fs << item.c << '\t';
+	fs << item.m << std::endl;
+	return fs;
 }
 
 
@@ -69,92 +69,92 @@ main()
 {
         setlocale(LC_ALL, "rus");
 
-	       LoadArray();
-	       PrintArray();
+	LoadArray();
+	PrintArray();
 
-	       printf("Сортировка по цене\n");
-	       ShortArray();
+	printf("Сортировка по цене\n");
+	ShortArray();
 
-	       PrintArray();
-	       printf("Поиск тавара:");
-	       int k = 0;
-	       cin >> k;
+	PrintArray();
+	printf("Поиск тавара:");
+	int k = 0;
+	cin >> k;
 
-	       Item * find = Find(k);
-	       if (find != nullptr)
-		               cout << *find;
-	       else
-		               cout << "Yе найдено\n";
+	Item * find = Find(k);
+	if (find != nullptr)
+		cout << *find;
+	else
+		cout << "Не найдено\n";
 
-	       SaveArray();
+	SaveArray();
 
-	       system("pause");
-	       return 0;
+	system("pause");
+	return 0;
 }
 
 
 void
 LoadArray()
 {
-	        if (Base != nullptr) {
-		               delete[] Base;
-		               Base = nullptr;
+	if (Base != nullptr) {
+	        delete[] Base;
+		Base = nullptr;
 	}
 
-	        std::ifstream fs("base.txt");
-	        fs >> BaseLen;
+	std::ifstream fs("base.txt");
+	fs >> BaseLen;
 
-	        Base = new Item[BaseLen];
-	        for (int i = 0; i < BaseLen; i++)
-		       fs >> Base[i];
+	Base = new Item[BaseLen];
+	for (int i = 0; i < BaseLen; i++)
+	fs >> Base[i];
 
-	        fs.close();
+	fs.close();
 
-	        int s = sizeof(Item);
-	        printf("Dыделенно %i байт\n", s * BaseLen, s);
+	int s = sizeof(Item);
+	printf("Dыделенно %i байт\n", s * BaseLen, s);
 }
 
 void
 SaveArray()
 {
 
-	      std::ofstream fs("base.txt");
-	      fs << BaseLen << '\n';
+	std::ofstream fs("base.txt");
+	fs << BaseLen << '\n';
 
-	      for (int i = 0; i < BaseLen; i++)
-		       fs << Base[i];
+	for (int i = 0; i < BaseLen; i++)
+		fs << Base[i];
 
-	      fs.close();
+	fs.close();
 }
 
 void
 ShortArray()
 {
-	       for (int j = 1; j <= (BaseLen - 1); j++) {
-		        for (int i = 0; i < BaseLen - j; i++) {
-			        if (Base[i] < Base[i + 1]) {
-				        Item s = Base[i + 1];
-				        Base[i + 1] = Base[i];
-				        Base[i] = s;
-			        }
-		        }
-	       }
+	for (int j = 1; j <= (BaseLen - 1); j++) {
+		for (int i = 0; i < BaseLen - j; i++) {
+			if (Base[i] < Base[i + 1]) {
+				Item s = Base[i + 1];
+				Base[i + 1] = Base[i];
+				Base[i] = s;
+			}
+		}
+	}
 }
 
 void
 PrintArray()
 {
-	       cout << "Индекс\tЦена\tМасса\n";
-	       for (int i = 0; i < BaseLen; i++)
-		               cout << Base[i];
+	cout << "Индекс\tЦена\tМасса\n";
+	for (int i = 0; i < BaseLen; i++)
+		 cout << Base[i];
 }
 
 Item*
 Find(int i)
 {
-	        for (int i = 0; i < BaseLen; i++)
-	        if (Base[i].i == i)
-		               return &Base[i];
+	for (int i = 0; i < BaseLen; i++)
+	if (Base[i].i == i)
+		return &Base[i];
 
 	        return nullptr;
 }
