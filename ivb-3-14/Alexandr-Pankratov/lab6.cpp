@@ -23,6 +23,11 @@ struct MyStruct
 		memory_count += size;
 		return malloc(size);
 	}
+		
+	void operator delete(void *p)
+	{
+		free(p);
+	}
 };
 
 int MyStruct::memory_count = 0;
